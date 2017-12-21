@@ -1,0 +1,6 @@
+framework module YJHomeKit {
+  umbrella header "YJHomeKit-umbrella.h"
+
+  export *
+  module * { export * }
+}

@@ -8,4 +8,6 @@
 
 #import <Foundation/Foundation.h>
 
+@interface YJHomeKit : NSObject
 
+@end

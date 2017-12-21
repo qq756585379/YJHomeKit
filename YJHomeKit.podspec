@@ -1,29 +1,10 @@
-#
-#  Be sure to run `pod spec lint YJHomeKit.podspec' to ensure this is a
-#  valid spec and to remove all comments including this before submitting the spec.
-#
-#  To learn more about Podspec attributes see http://docs.cocoapods.org/specification.html
-#  To see working Podspecs in the CocoaPods repo see https://github.com/CocoaPods/Specs/
-#
 
 Pod::Spec.new do |s|
-
-  # ―――  Spec Metadata  ―――――――――――――――――――――――――――――――――――――――――――――――――――――――――― #
-  #
-  #  These will help people to find your library, and whilst it
-  #  can feel like a chore to fill in it's definitely to your advantage. The
-  #  summary should be tweet-length, and the description more in depth.
-  #
 
   s.name         = "YJHomeKit"
   s.version      = "0.0.2"
   s.summary      = "YJHomeKit 自己用的"
 
-  # This description is used to generate tags and improve search results.
-  #   * Think: What does it do? Why did you write it? What is the focus?
-  #   * Try to keep it short, snappy and to the point.
-  #   * Write the description between the DESC delimiters below.
-  #   * Finally, don't worry about the indent, CocoaPods strips it!
   s.description  = <<-DESC
                     用CocoaPods做iOS程序的依赖管理，测试
                    DESC
@@ -31,38 +12,13 @@ Pod::Spec.new do |s|
   s.homepage     = "https://github.com/qq756585379/YJHomeKit"
   # s.screenshots  = "www.example.com/screenshots_1.gif", "www.example.com/screenshots_2.gif"
 
-
-  # ―――  Spec License  ――――――――――――――――――――――――――――――――――――――――――――――――――――――――――― #
-  #
-  #  Licensing your code is important. See http://choosealicense.com for more info.
-  #  CocoaPods will detect a license file if there is a named LICENSE*
-  #  Popular ones are 'MIT', 'BSD' and 'Apache License, Version 2.0'.
-  #
-
   # s.license      = "MIT (example)"
   s.license      = { :type => "MIT", :file => "LICENSE" }
-
-
-  # ――― Author Metadata  ――――――――――――――――――――――――――――――――――――――――――――――――――――――――― #
-  #
-  #  Specify the authors of the library, with email addresses. Email addresses
-  #  of the authors are extracted from the SCM log. E.g. $ git log. CocoaPods also
-  #  accepts just a name if you'd rather not provide an email address.
-  #
-  #  Specify a social_media_url where others can refer to, for example a twitter
-  #  profile URL.
-  #
 
   s.author             = { "杨俊" => "756585379@qq.com" }
   # Or just: s.author    = "杨俊"
   # s.authors            = { "杨俊" => "756585379@qq.com" }
   # s.social_media_url   = "http://twitter.com/杨俊"
-
-  # ――― Platform Specifics ――――――――――――――――――――――――――――――――――――――――――――――――――――――― #
-  #
-  #  If this Pod runs only on iOS or OS X, then specify the platform and
-  #  the deployment target. You can optionally include the target after the platform.
-  #
 
   s.platform     = :ios
   s.platform     = :ios, "9.0"
@@ -73,62 +29,37 @@ Pod::Spec.new do |s|
   # s.watchos.deployment_target = "2.0"
   # s.tvos.deployment_target = "9.0"
 
-
-  # ――― Source Location ―――――――――――――――――――――――――――――――――――――――――――――――――――――――――― #
-  #
-  #  Specify the location from where the source should be retrieved.
-  #  Supports git, hg, bzr, svn and HTTP.
-  #
-
   s.source       = { :git => "https://github.com/qq756585379/YJHomeKit.git", :tag => "#{s.version}" }
 
-
-  # ――― Source Code ―――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――― #
-  #
-  #  CocoaPods is smart about how it includes source code. For source files
-  #  giving a folder will include any swift, h, m, mm, c & cpp files.
-  #  For header files it will include any header in the folder.
-  #  Not including the public_header_files will make all headers public.
-  #
-
-  s.source_files  = "YJHomeKit", "YJHomeKit/*.{h,m}"
+  # s.source_files  = "YJHomeKit", "YJHomeKit/*.{h,m}"
   # s.exclude_files = "Classes/Exclude"
 
+  s.public_header_files = 'YJHomeKit/YJHomeKit.h'
+  s.source_files = 'YJHomeKit/YJHomeKit.h'
   # s.public_header_files = "Classes/**/*.h"
 
+  s.subspec 'Core' do |ss|
+    ss.source_files = 'YJHomeKit/Core/*.{h,m}'
+    ss.public_header_files = 'YJHomeKit/Core/*.h'
+  end
 
-  # ――― Resources ―――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――― #
-  #
-  #  A list of resources included with the Pod. These are copied into the
-  #  target bundle with a build phase script. Anything else will be cleaned.
-  #  You can preserve files from being cleaned, please don't preserve
-  #  non-essential files like tests, examples and documentation.
-  #
+  s.subspec 'UIKit' do |ss|
+    ss.ios.deployment_target = '9.0'
+    ss.dependency 'YJHomeKit/Core'
+    ss.source_files = 'YJHomeKit/UIKit/*.{h,m}'
+    ss.public_header_files = 'YJHomeKit/UIKit/*.h'
+  end
 
   # s.resource  = "icon.png"
   # s.resources = "Resources/*.png"
 
   # s.preserve_paths = "FilesToSave", "MoreFilesToSave"
 
-
-  # ――― Project Linking ―――――――――――――――――――――――――――――――――――――――――――――――――――――――――― #
-  #
-  #  Link your library with frameworks, or libraries. Libraries do not include
-  #  the lib prefix of their name.
-  #
-
-  s.framework  = "UIKit"
-  # s.frameworks = "SomeFramework", "AnotherFramework"
+  # s.framework  = "UIKit"
+  s.frameworks = "UIKit", "Foundation"
 
   # s.library   = "iconv"
   # s.libraries = "iconv", "xml2"
-
-
-  # ――― Project Settings ――――――――――――――――――――――――――――――――――――――――――――――――――――――――― #
-  #
-  #  If your library depends on compiler flags you can set them in the xcconfig hash
-  #  where they will only apply to your library. If you depend on other Podspecs
-  #  you can include multiple dependencies to ensure it works.
 
   s.requires_arc = true
 
