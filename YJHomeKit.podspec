@@ -34,21 +34,37 @@ Pod::Spec.new do |s|
   # s.source_files  = "YJHomeKit", "YJHomeKit/*.{h,m}"
   # s.exclude_files = "Classes/Exclude"
 
-  s.public_header_files = 'YJHomeKit/YJHomeKit.h'
-  s.source_files = 'YJHomeKit/YJHomeKit.h'
+  # s.public_header_files = 'YJHomeKit/YJHomeKit.h'
+  # s.source_files = 'YJHomeKit/YJHomeKit.h'
+
+  s.public_header_files = 'YJHomeKit/*.{h}' , 'YJHomeKit/**/*.{h}'
+  # s.source_files = 'YJHomeKit/**/*.{h,m}'
+
+  s.source_files = 'YJHomeKit/*.{h,m}' , 'YJHomeKit/**/*.{h,m}'
   # s.public_header_files = "Classes/**/*.h"
 
-  s.subspec 'Core' do |ss|
-    ss.source_files = 'YJHomeKit/Core/*.{h,m}'
-    ss.public_header_files = 'YJHomeKit/Core/*.h'
-  end
+  # s.subspec 'Core' do |ss|
+  #   ss.source_files = 'YJHomeKit/Core/*.{h,m}'
+  #   ss.public_header_files = 'YJHomeKit/Core/*.h'
+  # end
 
-  s.subspec 'UIKit' do |ss|
-    ss.ios.deployment_target = '9.0'
-    ss.dependency 'YJHomeKit/Core'
-    ss.source_files = 'YJHomeKit/UIKit/*.{h,m}'
-    ss.public_header_files = 'YJHomeKit/UIKit/*.h'
-  end
+  # s.subspec 'UIKit' do |ss|
+  #   ss.ios.deployment_target = '9.0'
+  #   ss.dependency 'YJHomeKit/Core'
+  #   ss.source_files = 'YJHomeKit/UIKit/*.{h,m}'
+  #   ss.public_header_files = 'YJHomeKit/UIKit/*.h'
+  # end
+
+  # s.subspec 'Category' do |ss|
+  #   ss.ios.deployment_target = '9.0'
+  #   ss.source_files = 'Category/**/*.{h,m}'
+  #   ss.public_header_files = 'Category/**/*.h'
+
+  #   # ss.subspec 'UIView' do |sss|
+  #   #   sss.source_files = 'YJHomeKit/Category/**/*.{h,m}'
+  #   #   sss.public_header_files = 'YJHomeKit/Category/**/*.h'
+  #   # end
+  # end
 
   # s.resource  = "icon.png"
   # s.resources = "Resources/*.png"

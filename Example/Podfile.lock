@@ -1,11 +1,6 @@
 PODS:
   - MBProgressHUD (1.0.0)
-  - YJHomeKit (0.0.2):
-    - YJHomeKit/Core (= 0.0.2)
-    - YJHomeKit/UIKit (= 0.0.2)
-  - YJHomeKit/Core (0.0.2)
-  - YJHomeKit/UIKit (0.0.2):
-    - YJHomeKit/Core
+  - YJHomeKit (0.0.2)
 
 DEPENDENCIES:
   - MBProgressHUD
@@ -17,7 +12,7 @@ EXTERNAL SOURCES:
 
 SPEC CHECKSUMS:
   MBProgressHUD: 4890f671c94e8a0f3cf959aa731e9de2f036d71a
-  YJHomeKit: 16e99abde1e3b15e77e4475672cc31972a423d7e
+  YJHomeKit: 07aad2f1b58c545bbe2680a920e9dab5ae447fe0
 
 PODFILE CHECKSUM: 0914ecb92dac1d52e09a84ce61d91c400e0911a4
 
