@@ -1,9 +1,11 @@
 PODS:
   - MBProgressHUD (1.0.0)
-  - YJHomeKit (0.0.2)
+  - PureLayout (3.0.2)
+  - YJHomeKit (0.0.3)
 
 DEPENDENCIES:
   - MBProgressHUD
+  - PureLayout
   - YJHomeKit (from `../`)
 
 EXTERNAL SOURCES:
@@ -12,8 +14,9 @@ EXTERNAL SOURCES:
 
 SPEC CHECKSUMS:
   MBProgressHUD: 4890f671c94e8a0f3cf959aa731e9de2f036d71a
-  YJHomeKit: 07aad2f1b58c545bbe2680a920e9dab5ae447fe0
+  PureLayout: 4d550abe49a94f24c2808b9b95db9131685fe4cd
+  YJHomeKit: a5ca3bb7f1cdc3cbd538055aef39093fc7e5b194
 
-PODFILE CHECKSUM: 0914ecb92dac1d52e09a84ce61d91c400e0911a4
+PODFILE CHECKSUM: 18731c6abcee8d80ac32b0a8bae0127c7c47acd5
 
 COCOAPODS: 1.4.0.rc.1

@@ -35,8 +35,7 @@
     }
     [alert addAction:[UIAlertAction actionWithTitle:aCancelButtonTitle style:UIAlertActionStyleCancel handler:nil]];
     
-    if(UI_USER_INTERFACE_IDIOM() == UIUserInterfaceIdiomPhone)
-    {
+    if(UI_USER_INTERFACE_IDIOM() == UIUserInterfaceIdiomPhone){
         dispatch_async(dispatch_get_main_queue(), ^{
             [[[self window] rootViewController] presentViewController:alert animated:YES completion:nil];
         });

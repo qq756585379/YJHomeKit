@@ -9,4 +9,7 @@
 #import <UIKit/UIKit.h>
 #import <Foundation/Foundation.h>
 
+#import <YJHomeKit/YJMacro.h>
+#import <YJHomeKit/UIView+YJ.h>
+#import <YJHomeKit/YJCollectionView.h>
 

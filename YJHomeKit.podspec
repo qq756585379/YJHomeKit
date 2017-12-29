@@ -41,6 +41,8 @@ Pod::Spec.new do |s|
   # s.source_files = 'YJHomeKit/**/*.{h,m}'
 
   s.source_files = 'YJHomeKit/*.{h,m}' , 'YJHomeKit/**/*.{h,m}'
+
+  s.resource = "YJHomeKit/**/*.bundle"
   # s.public_header_files = "Classes/**/*.h"
 
   # s.subspec 'Core' do |ss|

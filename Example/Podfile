@@ -8,4 +8,5 @@ target 'Example' do
     pod 'YJHomeKit', :path=> '../'
     # Pods for Example
     pod 'MBProgressHUD'
+    pod 'PureLayout'
 end
