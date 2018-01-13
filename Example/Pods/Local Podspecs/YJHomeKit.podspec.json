@@ -31,5 +31,10 @@
     "UIKit",
     "Foundation"
   ],
-  "requires_arc": true
+  "requires_arc": true,
+  "dependencies": {
+    "Masonry": [
+
+    ]
+  }
 }

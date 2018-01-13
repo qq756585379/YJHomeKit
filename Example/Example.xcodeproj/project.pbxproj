@@ -8,18 +8,30 @@
 
 /* Begin PBXBuildFile section */
 		C55A0F06D29BB76D36D8A811 /* Pods_Example.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3A023686F7507F49ADE42CBB /* Pods_Example.framework */; };
+		F50B68B01FFC773400183AB0 /* YJExample.m in Sources */ = {isa = PBXBuildFile; fileRef = F50B68AF1FFC773400183AB0 /* YJExample.m */; };
+		F50B68B31FFC7A8800183AB0 /* YJPhotoToolVC.m in Sources */ = {isa = PBXBuildFile; fileRef = F50B68B21FFC7A8800183AB0 /* YJPhotoToolVC.m */; };
+		F50B68B71FFC7CEB00183AB0 /* 猫猫.jpg in Resources */ = {isa = PBXBuildFile; fileRef = F50B68B51FFC7CEA00183AB0 /* 猫猫.jpg */; };
+		F50B68B81FFC7CEB00183AB0 /* bug.mov in Resources */ = {isa = PBXBuildFile; fileRef = F50B68B61FFC7CEB00183AB0 /* bug.mov */; };
 		F53663F51FEA3197008175CA /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = F53663F41FEA3197008175CA /* AppDelegate.m */; };
 		F53663F81FEA3197008175CA /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F53663F71FEA3197008175CA /* ViewController.m */; };
 		F53663FB1FEA3197008175CA /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F53663F91FEA3197008175CA /* Main.storyboard */; };
 		F53663FD1FEA3197008175CA /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = F53663FC1FEA3197008175CA /* Assets.xcassets */; };
 		F53664001FEA3197008175CA /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F53663FE1FEA3197008175CA /* LaunchScreen.storyboard */; };
 		F53664031FEA3197008175CA /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = F53664021FEA3197008175CA /* main.m */; };
+		F571FC191FFF0BA1002B7E25 /* YJWebViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F571FC181FFF0BA1002B7E25 /* YJWebViewController.m */; };
+		F5F9A3D8200A1551005FBC66 /* YJBaseSettingController.m in Sources */ = {isa = PBXBuildFile; fileRef = F5F9A3D7200A1551005FBC66 /* YJBaseSettingController.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
 		3A023686F7507F49ADE42CBB /* Pods_Example.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Example.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		8156D883B542D9379ABB215A /* Pods-Example.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Example.release.xcconfig"; path = "Pods/Target Support Files/Pods-Example/Pods-Example.release.xcconfig"; sourceTree = "<group>"; };
 		E9A115A25850C81400E79AD8 /* Pods-Example.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Example.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Example/Pods-Example.debug.xcconfig"; sourceTree = "<group>"; };
+		F50B68AE1FFC773400183AB0 /* YJExample.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = YJExample.h; sourceTree = "<group>"; };
+		F50B68AF1FFC773400183AB0 /* YJExample.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = YJExample.m; sourceTree = "<group>"; };
+		F50B68B11FFC7A8800183AB0 /* YJPhotoToolVC.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = YJPhotoToolVC.h; sourceTree = "<group>"; };
+		F50B68B21FFC7A8800183AB0 /* YJPhotoToolVC.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = YJPhotoToolVC.m; sourceTree = "<group>"; };
+		F50B68B51FFC7CEA00183AB0 /* 猫猫.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = "猫猫.jpg"; sourceTree = "<group>"; };
+		F50B68B61FFC7CEB00183AB0 /* bug.mov */ = {isa = PBXFileReference; lastKnownFileType = video.quicktime; path = bug.mov; sourceTree = "<group>"; };
 		F53663F01FEA3197008175CA /* Example.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Example.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		F53663F31FEA3197008175CA /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		F53663F41FEA3197008175CA /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
@@ -30,6 +42,10 @@
 		F53663FF1FEA3197008175CA /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		F53664011FEA3197008175CA /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		F53664021FEA3197008175CA /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
+		F571FC171FFF0BA1002B7E25 /* YJWebViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = YJWebViewController.h; sourceTree = "<group>"; };
+		F571FC181FFF0BA1002B7E25 /* YJWebViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = YJWebViewController.m; sourceTree = "<group>"; };
+		F5F9A3D6200A1551005FBC66 /* YJBaseSettingController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = YJBaseSettingController.h; sourceTree = "<group>"; };
+		F5F9A3D7200A1551005FBC66 /* YJBaseSettingController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = YJBaseSettingController.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -61,6 +77,26 @@
 			name = Pods;
 			sourceTree = "<group>";
 		};
+		F50B68AD1FFC771C00183AB0 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				F50B68AE1FFC773400183AB0 /* YJExample.h */,
+				F50B68AF1FFC773400183AB0 /* YJExample.m */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		F50B68B41FFC7A8F00183AB0 /* YJPhotoTool */ = {
+			isa = PBXGroup;
+			children = (
+				F50B68B51FFC7CEA00183AB0 /* 猫猫.jpg */,
+				F50B68B61FFC7CEB00183AB0 /* bug.mov */,
+				F50B68B11FFC7A8800183AB0 /* YJPhotoToolVC.h */,
+				F50B68B21FFC7A8800183AB0 /* YJPhotoToolVC.m */,
+			);
+			path = YJPhotoTool;
+			sourceTree = "<group>";
+		};
 		F53663E71FEA3197008175CA = {
 			isa = PBXGroup;
 			children = (
@@ -82,17 +118,47 @@
 		F53663F21FEA3197008175CA /* Example */ = {
 			isa = PBXGroup;
 			children = (
+				F5F9A3D5200A1466005FBC66 /* SettingVC */,
+				F571FBB31FFF0B60002B7E25 /* Web-Test */,
+				F50B68B41FFC7A8F00183AB0 /* YJPhotoTool */,
+				F50B68AD1FFC771C00183AB0 /* Model */,
+				F53702C21FFE0268007DF0AA /* RAC-Test */,
 				F53663F31FEA3197008175CA /* AppDelegate.h */,
 				F53663F41FEA3197008175CA /* AppDelegate.m */,
 				F53663F61FEA3197008175CA /* ViewController.h */,
 				F53663F71FEA3197008175CA /* ViewController.m */,
-				F53663F91FEA3197008175CA /* Main.storyboard */,
 				F53663FC1FEA3197008175CA /* Assets.xcassets */,
-				F53663FE1FEA3197008175CA /* LaunchScreen.storyboard */,
 				F53664011FEA3197008175CA /* Info.plist */,
+				F53663FE1FEA3197008175CA /* LaunchScreen.storyboard */,
 				F53664021FEA3197008175CA /* main.m */,
+				F53663F91FEA3197008175CA /* Main.storyboard */,
 			);
 			path = Example;
+			sourceTree = "<group>";
+		};
+		F53702C21FFE0268007DF0AA /* RAC-Test */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = "RAC-Test";
+			sourceTree = "<group>";
+		};
+		F571FBB31FFF0B60002B7E25 /* Web-Test */ = {
+			isa = PBXGroup;
+			children = (
+				F571FC171FFF0BA1002B7E25 /* YJWebViewController.h */,
+				F571FC181FFF0BA1002B7E25 /* YJWebViewController.m */,
+			);
+			path = "Web-Test";
+			sourceTree = "<group>";
+		};
+		F5F9A3D5200A1466005FBC66 /* SettingVC */ = {
+			isa = PBXGroup;
+			children = (
+				F5F9A3D6200A1551005FBC66 /* YJBaseSettingController.h */,
+				F5F9A3D7200A1551005FBC66 /* YJBaseSettingController.m */,
+			);
+			path = SettingVC;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -158,7 +224,9 @@
 			files = (
 				F53664001FEA3197008175CA /* LaunchScreen.storyboard in Resources */,
 				F53663FD1FEA3197008175CA /* Assets.xcassets in Resources */,
+				F50B68B81FFC7CEB00183AB0 /* bug.mov in Resources */,
 				F53663FB1FEA3197008175CA /* Main.storyboard in Resources */,
+				F50B68B71FFC7CEB00183AB0 /* 猫猫.jpg in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -173,12 +241,14 @@
 			inputPaths = (
 				"${SRCROOT}/Pods/Target Support Files/Pods-Example/Pods-Example-frameworks.sh",
 				"${BUILT_PRODUCTS_DIR}/MBProgressHUD/MBProgressHUD.framework",
+				"${BUILT_PRODUCTS_DIR}/Masonry/Masonry.framework",
 				"${BUILT_PRODUCTS_DIR}/PureLayout/PureLayout.framework",
 				"${BUILT_PRODUCTS_DIR}/YJHomeKit/YJHomeKit.framework",
 			);
 			name = "[CP] Embed Pods Frameworks";
 			outputPaths = (
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/MBProgressHUD.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Masonry.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/PureLayout.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/YJHomeKit.framework",
 			);
@@ -228,7 +298,11 @@
 			buildActionMask = 2147483647;
 			files = (
 				F53663F81FEA3197008175CA /* ViewController.m in Sources */,
+				F50B68B01FFC773400183AB0 /* YJExample.m in Sources */,
+				F5F9A3D8200A1551005FBC66 /* YJBaseSettingController.m in Sources */,
 				F53664031FEA3197008175CA /* main.m in Sources */,
+				F50B68B31FFC7A8800183AB0 /* YJPhotoToolVC.m in Sources */,
+				F571FC191FFF0BA1002B7E25 /* YJWebViewController.m in Sources */,
 				F53663F51FEA3197008175CA /* AppDelegate.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -303,7 +377,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 11.2;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				MTL_ENABLE_DEBUG_INFO = YES;
 				ONLY_ACTIVE_ARCH = YES;
 				SDKROOT = iphoneos;
@@ -352,7 +426,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 11.2;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				SDKROOT = iphoneos;
 				VALIDATE_PRODUCT = YES;
@@ -367,6 +441,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 4S7HJ2TM84;
 				INFOPLIST_FILE = Example/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.chuangmi.Example;
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -382,6 +457,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 4S7HJ2TM84;
 				INFOPLIST_FILE = Example/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.chuangmi.Example;
 				PRODUCT_NAME = "$(TARGET_NAME)";

@@ -7,7 +7,6 @@
 //
 
 #import "AppDelegate.h"
-#import <YJHomeKit/YJHomeKit.h>
 
 @interface AppDelegate ()
 

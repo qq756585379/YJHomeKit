@@ -1,7 +1,9 @@
 PODS:
+  - Masonry (1.1.0)
   - MBProgressHUD (1.0.0)
   - PureLayout (3.0.2)
-  - YJHomeKit (0.0.3)
+  - YJHomeKit (0.0.3):
+    - Masonry
 
 DEPENDENCIES:
   - MBProgressHUD
@@ -13,10 +15,11 @@ EXTERNAL SOURCES:
     :path: ../
 
 SPEC CHECKSUMS:
+  Masonry: 678fab65091a9290e40e2832a55e7ab731aad201
   MBProgressHUD: 4890f671c94e8a0f3cf959aa731e9de2f036d71a
   PureLayout: 4d550abe49a94f24c2808b9b95db9131685fe4cd
-  YJHomeKit: a5ca3bb7f1cdc3cbd538055aef39093fc7e5b194
+  YJHomeKit: fa42f22fca458ab906ac4139b63400e497e93e7d
 
-PODFILE CHECKSUM: 18731c6abcee8d80ac32b0a8bae0127c7c47acd5
+PODFILE CHECKSUM: 34f929be8f204e4b3daeacc6e5d09adf2a3b78e7
 
 COCOAPODS: 1.4.0.rc.1
