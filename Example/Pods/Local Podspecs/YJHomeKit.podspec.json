@@ -35,6 +35,12 @@
   "dependencies": {
     "Masonry": [
 
+    ],
+    "Aspects": [
+
+    ],
+    "ReactiveObjC": [
+
     ]
   }
 }

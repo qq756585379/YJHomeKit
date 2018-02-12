@@ -34,9 +34,9 @@
 #define HEXCOLOR(hex) 	  [UIColor colorWithRed:((float)((hex & 0xFF0000) >> 16)) / 255.0 \
 green:((float)((hex & 0xFF00) >> 8)) / 255.0 blue:((float)(hex & 0xFF)) / 255.0 alpha:1]
 
-#define APPDELEGATE ((AppDelegate *)[UIApplication sharedApplication].delegate)
+#define APP_DELEGATE 	((AppDelegate *)[UIApplication sharedApplication].delegate)
 
-#define KEY_WINDOW  [UIApplication sharedApplication].keyWindow
+#define KEY_WINDOW  	[UIApplication sharedApplication].keyWindow
 
 //打印
 #ifdef DEBUG

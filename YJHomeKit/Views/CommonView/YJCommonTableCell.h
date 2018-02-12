@@ -14,36 +14,25 @@ typedef enum {
     YJCommonTableCellTypeNone,
     YJCommonTableCellTypeArrow,
     YJCommonTableCellRightIcon,
-    YJCommonTableCellTypeSwitch,
-    YJCommonTableCellTypeJustLabel,
-    YJCommonTableCellTypeLabelArrow
+    YJCommonTableCellTypeSwitch
 }YJCommonTableCellType;
 
 @interface YJCommonTableCellVO : NSObject
 @property (nonatomic,   copy) NSString *title;
-@property (nonatomic,   copy) NSString *subTitle;
-@property (nonatomic,   copy) NSString *rightTitle;
+@property (nonatomic,   copy) NSString *detailTitle;
+
 @property (nonatomic, strong) UIImage *image;
-@property (nonatomic,   copy) NSString *imageName;
 @property (nonatomic, strong) UIImage *rightImage;
-@property (nonatomic,   copy) NSString *rightImageName;
 
 @property (nonatomic, assign) BOOL isOn;
 @property (nonatomic, assign) BOOL selected;
 @property (nonatomic, assign) CGFloat cellHeight;
-@property (nonatomic, assign) BOOL hasAcIndicator;
-// cell右边显示类型
-@property (nonatomic, assign) YJCommonTableCellType cellType;
+
+@property (nonatomic, assign) UITableViewCellStyle style;
+@property (nonatomic, assign) YJCommonTableCellType cellType;// cell右边显示类型
+
 @property (nonatomic,   copy) void(^clickBlock)(YJCommonTableCell *cell);
 @property (nonatomic,   copy) void(^switchBlock)(NSIndexPath *indexPath,YJCommonTableCellVO *cellVO);
-
--(instancetype)initWithTitle:(NSString *)title
-                    subTitle:(NSString *)subTitle
-                  rightTitle:(NSString *)rightTitle
-                    cellType:(YJCommonTableCellType)cellType
-                    selected:(BOOL)selected
-                        isOn:(BOOL)isOn;
-
 @end
 
 @interface YJCommonTableCellGroup : NSObject
@@ -57,8 +46,6 @@ typedef enum {
 @interface YJCommonTableCell : YJTableViewCell
 
 @property (nonatomic, strong) YJCommonTableCellVO *cellVO;
-
-@property (nonatomic, strong) UILabel *rightLabel;
 
 + (instancetype)cellWithTableView:(UITableView *)tableView style:(UITableViewCellStyle)style;
     

@@ -31,19 +31,13 @@ Pod::Spec.new do |s|
 
   s.source       = { :git => "https://github.com/qq756585379/YJHomeKit.git", :tag => "#{s.version}" }
 
-  # s.source_files  = "YJHomeKit", "YJHomeKit/*.{h,m}"
   # s.exclude_files = "Classes/Exclude"
 
-  # s.public_header_files = 'YJHomeKit/YJHomeKit.h'
-  # s.source_files = 'YJHomeKit/YJHomeKit.h'
-
   s.public_header_files = 'YJHomeKit/*.{h}' , 'YJHomeKit/**/*.{h}'
-  # s.source_files = 'YJHomeKit/**/*.{h,m}'
 
   s.source_files = 'YJHomeKit/*.{h,m}' , 'YJHomeKit/**/*.{h,m}'
 
   s.resource = "YJHomeKit/**/*.bundle"
-  # s.public_header_files = "Classes/**/*.h"
 
   # s.subspec 'Core' do |ss|
   #   ss.source_files = 'YJHomeKit/Core/*.{h,m}'
@@ -83,5 +77,6 @@ Pod::Spec.new do |s|
 
   # s.xcconfig = { "HEADER_SEARCH_PATHS" => "$(SDKROOT)/usr/include/libxml2" }
   s.dependency "Masonry"
-
+  s.dependency "Aspects"
+  s.dependency "ReactiveObjC"
 end

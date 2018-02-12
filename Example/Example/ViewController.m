@@ -8,6 +8,8 @@
 
 #import "ViewController.h"
 #import <YJHomeKit/YJHomeKit.h>
+#import <MBProgressHUD/MBProgressHUD.h>
+#import <PureLayout/PureLayout.h>
 #import "YJExample.h"
 
 @interface ViewController ()<UITableViewDelegate,UITableViewDataSource>
@@ -15,6 +17,7 @@
 @property (nonatomic, strong) UITableView *tableView;
 @property (strong, nonatomic) NSDate *lastUpdateDate;
 @property (nonatomic, strong) NSArray<YJExample *>*examples;
+@property (nonatomic, strong) UIView *fullView;
 @end
 
 @implementation ViewController
@@ -27,11 +30,16 @@
     [self configData];
 }
 
+-(void)viewDidAppear:(BOOL)animated{
+    [super viewDidAppear:animated];
+    
+}
+
 -(void)configData{
     self.examples = @[[YJExample exampleWithTitle:@"YJPhotoToolVC" selector:@"YJPhotoToolVC"],
                       [YJExample exampleWithTitle:@"YJWebViewController" selector:@"YJWebViewController"],
                       [YJExample exampleWithTitle:@"YJBaseSettingController" selector:@"YJBaseSettingController"],
-                      [YJExample exampleWithTitle:@"Zoom View" selector:@"zoomViewExample"],
+                      [YJExample exampleWithTitle:@"YJTestSettingController" selector:@"YJTestSettingController"],
                       [YJExample exampleWithTitle:@"JavaScriptCore" selector:@"JavaScriptCore"],
                       [YJExample exampleWithTitle:@"JavaScriptCore" selector:@"JavaScriptCore"],
                       [YJExample exampleWithTitle:@"MiHome" selector:@"MiHomeUI"],
@@ -39,6 +47,10 @@
                       [YJExample exampleWithTitle:@"playSound" selector:@"playSound"],
                       [YJExample exampleWithTitle:@"AVPlayer" selector:@"aVPlayerExample"]];
     [self.tableView reloadData];
+}
+
+-(void)YJTestSettingController{
+    [self.navigationController pushViewController:[NSClassFromString(@"YJTestSettingController") new] animated:YES];
 }
 
 -(void)YJBaseSettingController{

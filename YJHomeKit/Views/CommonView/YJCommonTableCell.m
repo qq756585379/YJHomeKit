@@ -7,30 +7,27 @@
 //
 
 #import "YJCommonTableCell.h"
+#import "YJMacro.h"
+#import "YJTool.h"
 
 @implementation YJCommonTableCellVO
 
--(instancetype)initWithTitle:(NSString *)title
-                    subTitle:(NSString *)subTitle
-                  rightTitle:(NSString *)rightTitle
-                    cellType:(YJCommonTableCellType)cellType
-                    selected:(BOOL)selected
-                        isOn:(BOOL)isOn
-{
-    if (self = [super init]) {
-        self.title = title;
-        self.subTitle = subTitle;
-        self.rightTitle = rightTitle;
-        self.cellType = cellType;
-        self.selected = selected;
-        self.isOn = isOn;
-    }
-    return self;
+-(UITableViewCellStyle)style{
+    return _style ? _style : UITableViewCellStyleDefault;
+}
+
+-(YJCommonTableCellType)cellType{
+    return _cellType ? _cellType : YJCommonTableCellTypeArrow;
+}
+
+-(CGFloat)cellHeight{
+    return _cellHeight ? _cellHeight : 50;
 }
 
 @end
 
 @implementation YJCommonTableCellGroup
+
 @end
 
 @implementation YJCommonTableCell
@@ -49,14 +46,9 @@
 
 -(instancetype)initWithStyle:(UITableViewCellStyle)style reuseIdentifier:(NSString *)reuseIdentifier{
     if (self = [super initWithStyle:style reuseIdentifier:reuseIdentifier]) {
-        self.selectionStyle = UITableViewCellSelectionStyleNone;
         
-        self.detailTextLabel.font = [UIFont systemFontOfSize:12];
-        self.detailTextLabel.textColor = [UIColor lightGrayColor];
-        self.detailTextLabel.numberOfLines = 0;
-        
-        self.textLabel.font = [UIFont systemFontOfSize:14];
         self.textLabel.numberOfLines = 0;
+        self.detailTextLabel.numberOfLines = 0;
 
         UIView *bg = [[UIView alloc] init];
         bg.backgroundColor = [UIColor whiteColor];
@@ -73,33 +65,20 @@
 -(void)setCellVO:(YJCommonTableCellVO *)cellVO{
     _cellVO = cellVO;
     
-    if (cellVO.imageName && cellVO.imageName.length) {
-        self.imageView.image = [UIImage imageNamed:cellVO.imageName];
-    }else if (cellVO.image){
-        self.imageView.image = cellVO.image;
-    }else{
-        self.imageView.image = nil;
-    }
-    
+    self.imageView.image = cellVO.image;
     self.textLabel.text = cellVO.title;
-    self.detailTextLabel.text = cellVO.subTitle;
+    self.detailTextLabel.text = cellVO.detailTitle;
     
     if (cellVO.cellType == YJCommonTableCellRightIcon) {
         self.selectionStyle = UITableViewCellSelectionStyleDefault;
         if (_rightIcon == nil) {
             _rightIcon =  [[UIImageView alloc] init];
         }
-        if (cellVO.rightImageName && cellVO.rightImageName.length) {
-            _rightIcon.image = [UIImage imageNamed:cellVO.rightImageName];
-        }else if (cellVO.rightImage){
-            _rightIcon.image = cellVO.rightImage;
-        }else{
-            _rightIcon.image = nil;
-        }
+        _rightIcon.image = cellVO.rightImage;
         self.accessoryView = _rightIcon;
     }else if (cellVO.cellType == YJCommonTableCellTypeArrow){ //右边是箭头
         self.selectionStyle = UITableViewCellSelectionStyleDefault;
-        self.editingAccessoryType = UITableViewCellAccessoryDisclosureIndicator; //使用原生箭头
+        self.accessoryType = UITableViewCellAccessoryDisclosureIndicator; //使用原生箭头
     }else if (cellVO.cellType == YJCommonTableCellTypeSwitch){
         self.selectionStyle = UITableViewCellSelectionStyleNone;
         if (_toggle == nil) {
@@ -108,33 +87,6 @@
         }
         _toggle.on = cellVO.isOn;
         self.accessoryView = _toggle;
-    }else if (cellVO.cellType == YJCommonTableCellTypeJustLabel){
-        self.selectionStyle = UITableViewCellSelectionStyleDefault;
-        if (_rightLabel == nil) {
-            _rightLabel = [[UILabel alloc] init];
-            CGFloat screenW = [UIScreen mainScreen].bounds.size.width;
-            _rightLabel.frame = CGRectMake(screenW - 130, 0, 100, self.frame.size.height);
-            [self.contentView addSubview:_rightLabel];
-            _rightLabel.textAlignment = NSTextAlignmentRight;
-            _rightLabel.font = [UIFont systemFontOfSize:14];
-            _rightLabel.textColor = [UIColor blackColor];
-            _rightLabel.numberOfLines = 0;
-        }
-        _rightLabel.text = cellVO.rightTitle;
-    }else if (cellVO.cellType == YJCommonTableCellTypeLabelArrow){
-        self.selectionStyle = UITableViewCellSelectionStyleDefault;
-        self.editingAccessoryType = UITableViewCellAccessoryDisclosureIndicator; //使用原生箭头
-        if (_rightLabel == nil) {
-            _rightLabel = [[UILabel alloc] init];
-            CGFloat screenW = [UIScreen mainScreen].bounds.size.width;
-            _rightLabel.frame = CGRectMake(screenW - 130, 0, 100, self.frame.size.height);
-            [self.contentView addSubview:_rightLabel];
-            _rightLabel.textAlignment = NSTextAlignmentRight;
-            _rightLabel.font = [UIFont systemFontOfSize:14];
-            _rightLabel.textColor = [UIColor blackColor];
-            _rightLabel.numberOfLines = 0;
-        }
-        _rightLabel.text = cellVO.rightTitle;
     }else{
         self.accessoryView = nil;
     }

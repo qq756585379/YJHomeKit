@@ -11,6 +11,10 @@
 #endif
 
 #import "YJHomeKit.h"
+#import "YJViewAspectProtocol.h"
+#import "YJViewControllerAspectProtocol.h"
+#import "YJViewModelAspectProtocol.h"
+#import "YJViewIntercepter.h"
 #import "NSBundle+tool.h"
 #import "NSObject+PerformBlock.h"
 #import "NSString+YJ.h"
@@ -33,6 +37,10 @@
 #import "YJTableViewCell.h"
 #import "YJCommonTableCell.h"
 #import "YJRefreshHeader.h"
+#import "YJToastView.h"
+#import "YJVideoContainer.h"
+#import "YJVideoPlayer.h"
+#import "YJVideoPlayerBar.h"
 
 FOUNDATION_EXPORT double YJHomeKitVersionNumber;
 FOUNDATION_EXPORT const unsigned char YJHomeKitVersionString[];

@@ -19,6 +19,7 @@
 		F53664001FEA3197008175CA /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F53663FE1FEA3197008175CA /* LaunchScreen.storyboard */; };
 		F53664031FEA3197008175CA /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = F53664021FEA3197008175CA /* main.m */; };
 		F571FC191FFF0BA1002B7E25 /* YJWebViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F571FC181FFF0BA1002B7E25 /* YJWebViewController.m */; };
+		F5D78DE9200C459A002CC473 /* YJTestSettingController.m in Sources */ = {isa = PBXBuildFile; fileRef = F5D78DE8200C459A002CC473 /* YJTestSettingController.m */; };
 		F5F9A3D8200A1551005FBC66 /* YJBaseSettingController.m in Sources */ = {isa = PBXBuildFile; fileRef = F5F9A3D7200A1551005FBC66 /* YJBaseSettingController.m */; };
 /* End PBXBuildFile section */
 
@@ -44,6 +45,8 @@
 		F53664021FEA3197008175CA /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		F571FC171FFF0BA1002B7E25 /* YJWebViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = YJWebViewController.h; sourceTree = "<group>"; };
 		F571FC181FFF0BA1002B7E25 /* YJWebViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = YJWebViewController.m; sourceTree = "<group>"; };
+		F5D78DE7200C459A002CC473 /* YJTestSettingController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = YJTestSettingController.h; sourceTree = "<group>"; };
+		F5D78DE8200C459A002CC473 /* YJTestSettingController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = YJTestSettingController.m; sourceTree = "<group>"; };
 		F5F9A3D6200A1551005FBC66 /* YJBaseSettingController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = YJBaseSettingController.h; sourceTree = "<group>"; };
 		F5F9A3D7200A1551005FBC66 /* YJBaseSettingController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = YJBaseSettingController.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -157,6 +160,8 @@
 			children = (
 				F5F9A3D6200A1551005FBC66 /* YJBaseSettingController.h */,
 				F5F9A3D7200A1551005FBC66 /* YJBaseSettingController.m */,
+				F5D78DE7200C459A002CC473 /* YJTestSettingController.h */,
+				F5D78DE8200C459A002CC473 /* YJTestSettingController.m */,
 			);
 			path = SettingVC;
 			sourceTree = "<group>";
@@ -240,17 +245,29 @@
 			);
 			inputPaths = (
 				"${SRCROOT}/Pods/Target Support Files/Pods-Example/Pods-Example-frameworks.sh",
+				"${BUILT_PRODUCTS_DIR}/AFNetworking/AFNetworking.framework",
+				"${BUILT_PRODUCTS_DIR}/Aspects/Aspects.framework",
+				"${BUILT_PRODUCTS_DIR}/JLRoutes/JLRoutes.framework",
 				"${BUILT_PRODUCTS_DIR}/MBProgressHUD/MBProgressHUD.framework",
 				"${BUILT_PRODUCTS_DIR}/Masonry/Masonry.framework",
 				"${BUILT_PRODUCTS_DIR}/PureLayout/PureLayout.framework",
+				"${BUILT_PRODUCTS_DIR}/ReactiveObjC/ReactiveObjC.framework",
+				"${BUILT_PRODUCTS_DIR}/SVProgressHUD/SVProgressHUD.framework",
 				"${BUILT_PRODUCTS_DIR}/YJHomeKit/YJHomeKit.framework",
+				"${BUILT_PRODUCTS_DIR}/YTKNetwork/YTKNetwork.framework",
 			);
 			name = "[CP] Embed Pods Frameworks";
 			outputPaths = (
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/AFNetworking.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Aspects.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/JLRoutes.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/MBProgressHUD.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Masonry.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/PureLayout.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/ReactiveObjC.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SVProgressHUD.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/YJHomeKit.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/YTKNetwork.framework",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
@@ -298,6 +315,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				F53663F81FEA3197008175CA /* ViewController.m in Sources */,
+				F5D78DE9200C459A002CC473 /* YJTestSettingController.m in Sources */,
 				F50B68B01FFC773400183AB0 /* YJExample.m in Sources */,
 				F5F9A3D8200A1551005FBC66 /* YJBaseSettingController.m in Sources */,
 				F53664031FEA3197008175CA /* main.m in Sources */,

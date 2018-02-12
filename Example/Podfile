@@ -9,7 +9,25 @@ target 'Example' do
     use_frameworks!
     
     pod 'YJHomeKit', :path=> '../'
-    # Pods for Example
+    
+    # 提示组件框架
+    pod 'SVProgressHUD'
     pod 'MBProgressHUD'
+    
+    # 自动布局
+    pod 'Masonry'
     pod 'PureLayout'
+    
+    # AOP面向切面
+    pod 'Aspects'
+    
+    # 响应函数式框架
+    pod 'ReactiveObjC'
+    
+    # 路由组件化解耦
+    pod 'JLRoutes'
+    
+    # 网络请求框架
+    pod 'YTKNetwork'
+    
 end
