@@ -11,6 +11,8 @@
 
 #import <YJHomeKit/YJTool.h>
 #import <YJHomeKit/YJMacro.h>
+#import <YJHomeKit/YJColor.h>
+#import <YJHomeKit/YJTabBar.h>
 #import <YJHomeKit/UIView+YJ.h>
 #import <YJHomeKit/UILabel+YJ.h>
 #import <YJHomeKit/YJTableView.h>
@@ -24,8 +26,8 @@
 #import <YJHomeKit/YJCommonTableCell.h>
 #import <YJHomeKit/UIBarButtonItem+YJ.h>
 #import <YJHomeKit/YJCollectionViewCell.h>
+#import <YJHomeKit/BaseTabBarController.h>
 #import <YJHomeKit/NSObject+PerformBlock.h>
 #import <YJHomeKit/YJCollectionReusableView.h>
-
 
 

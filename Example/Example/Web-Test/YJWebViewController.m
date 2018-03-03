@@ -8,6 +8,7 @@
 
 #import "YJWebViewController.h"
 #import <PureLayout/PureLayout.h>
+#import <YJHomeKit/YJHomeKit.h>
 #import <WebKit/WebKit.h>
 
 @interface YJWebViewController ()<WKNavigationDelegate,UIWebViewDelegate,WKUIDelegate>
@@ -21,7 +22,6 @@
     [super viewDidLoad];
     self.view.backgroundColor = [UIColor whiteColor];
     [self.view addSubview:self.webView];
-    [self.webView autoPinEdgesToSuperviewEdges];
     
     [self.view addSubview:self.progressView];
     [self.progressView autoPinEdgeToSuperviewEdge:ALEdgeLeft];
@@ -29,8 +29,8 @@
     [self.progressView autoPinEdgeToSuperviewEdge:ALEdgeTop];
     [self.progressView autoSetDimension:ALDimensionHeight toSize:2];
     
-    NSURL *filePath = [[NSBundle mainBundle] URLForResource:@"index.html" withExtension:nil];
-    NSURLRequest *request = [NSURLRequest requestWithURL:filePath];
+//    NSURL *filePath = [[NSBundle mainBundle] URLForResource:@"index.html" withExtension:nil];
+    NSURLRequest *request = [NSURLRequest requestWithURL:[NSURL URLWithString:@"http://localhost:8080"]];
     [self.webView loadRequest:request];
 }
 
@@ -79,7 +79,7 @@
         preferences.javaScriptCanOpenWindowsAutomatically = YES;
         preferences.minimumFontSize = 10;
         configuration.preferences = preferences;
-        _webView = [[WKWebView alloc] initWithFrame:CGRectZero configuration:configuration];
+        _webView = [[WKWebView alloc] initWithFrame:CGRectMake(0, NAV_BAR_HEIGHT, SCREEN_WIDTH, SCREEN_HEIGHT - NAV_BAR_HEIGHT - SAFE_AREA_BOTTOM) configuration:configuration];
         _webView.navigationDelegate = self;
         _webView.UIDelegate = self;
         _webView.scrollView.backgroundColor = [UIColor whiteColor];

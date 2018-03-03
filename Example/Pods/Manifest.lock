@@ -24,6 +24,7 @@ PODS:
   - YJHomeKit (0.0.3):
     - Aspects
     - Masonry
+    - PureLayout
     - ReactiveObjC
   - YTKNetwork (2.0.4):
     - AFNetworking (~> 3.0)
@@ -52,7 +53,7 @@ SPEC CHECKSUMS:
   PureLayout: 4d550abe49a94f24c2808b9b95db9131685fe4cd
   ReactiveObjC: ce79989e8684b9086b5f8d0c74bc7b81a8729c9e
   SVProgressHUD: 59b2d3dabacbd051576d21d32293ca7228dc18b0
-  YJHomeKit: 08a54224cc0e83a9f6c3e2943bcd23c4db4f68b7
+  YJHomeKit: 81c503cdd1346ec621afeb2dabbaa472517c9188
   YTKNetwork: df8a7a5597bda1664a4efaa7ef871a818a887fe0
 
 PODFILE CHECKSUM: 98f233b74a32019debb8a1ade6f8c34b5288b693

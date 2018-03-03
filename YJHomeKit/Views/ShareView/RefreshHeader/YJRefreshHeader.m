@@ -8,10 +8,10 @@
 #import "YJRefreshHeader.h"
 #import "NSMutableArray+safe.h"
 #import "YJUserDefault.h"
-#import "UIColor+Tool.h"
 #import "UIImage+tool.h"
 #import "NSBundle+tool.h"
 #import "UIView+YJ.h"
+#import "YJColor.h"
 #import "YJMacro.h"
 
 static const CGFloat 	YJRefreshHeaderViewDefaultHeight = 65.f;
@@ -43,7 +43,7 @@ static const int        YJRefreshHeaderViewDefaultImageCount = 14;
 
 - (id)initWithFrame:(CGRect)frame {
     if (self = [super initWithFrame:frame]) {
-        self.backgroundColor = [UIColor colorWithHexString:@"0xeeeeee"];
+        self.backgroundColor = [YJColor colorWithHexString:@"0xeeeeee"];
         self.infoLabel = [UILabel autolayoutView];
         self.infoLabel.font = [UIFont systemFontOfSize:12.0f];
         self.infoLabel.textColor = [UIColor lightGrayColor];
