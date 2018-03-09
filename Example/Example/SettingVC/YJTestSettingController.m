@@ -52,7 +52,7 @@
         cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator; //使用原生箭头
         cell.imageView.image = [UIImage imageNamed:@"device_share_xiaomi"];
         cell.textLabel.text = @"xiaomi";
-        cell.detailTextLabel.text = @"mijia device_share_xiaomidevice_share_xiaomidevice_share_xiaomidevice_share_xiaomidevice_share_xiaomidevice_share_xiaomi";
+        cell.detailTextLabel.text = @"mijia device_share";
         return cell;
     }else if (indexPath.row == 2){
         UITableViewCell *cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleValue2 reuseIdentifier:@"cell3"];
@@ -66,7 +66,7 @@
         cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator; //使用原生箭头
         cell.imageView.image = [UIImage imageNamed:@"device_share_xiaomi"];
         cell.textLabel.text = @"xiaomi";
-        cell.detailTextLabel.text = @"mijia device_share_xiaomidevice_share_xiaomidevice_share_xiaomidevice_share_xiaomidevice_share_xiaomidevice_share_xiaomi";
+        cell.detailTextLabel.text = @"mijia device_share_xiaomidevi";
         return cell;
     }else{
         return nil;

@@ -103,10 +103,8 @@
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath{
     YJCommonTableCellGroup *group = _dataArray[indexPath.section];
     YJCommonTableCellVO *model = group.items[indexPath.row];
-    
     YJCommonTableCell *cell = [YJCommonTableCell cellWithTableView:tableView style:model.style];
     cell.cellVO = model;
-
     return cell;
 }
 // cell的点击监听事件
