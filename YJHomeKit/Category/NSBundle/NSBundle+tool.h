@@ -9,7 +9,7 @@
 
 @interface NSBundle (tool)
 
-+ (NSBundle *)yj_bundleWithName:(NSString *)bundlename;
++ (NSBundle *)bundleWithName:(NSString *)bundlename;
 
 + (NSBundle *)bundleWithClass:(Class)aClass pathForResource:(NSString *)resource;
 

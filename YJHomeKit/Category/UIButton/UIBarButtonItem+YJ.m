@@ -41,8 +41,7 @@
     return [[UIBarButtonItem alloc] initWithCustomView:containView];
 }
 
-+ (UIBarButtonItem *)backItemWithImage:(UIImage *)image highImage:(UIImage *)highImage target:(id)target
-                                action:(SEL)action title:(NSString *)title
++ (UIBarButtonItem *)backItemWithImage:(UIImage *)image highImage:(UIImage *)highImage target:(id)target action:(SEL)action title:(NSString *)title
 {
     UIButton *backButton = [UIButton buttonWithType:UIButtonTypeCustom];
     [backButton setTitle:title forState:UIControlStateNormal];

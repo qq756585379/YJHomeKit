@@ -40,4 +40,8 @@
  */
 - (void)performInThreadBlock:(void(^)(void))aInThreadBlock afterSecond:(NSTimeInterval)delay;
 
+-(void)yj_performSelector:(SEL)aSelector withObject:(id)object;
+
+-(void)yj_performSelectorName:(NSString *)aSelector withObject:(id)object;
+
 @end

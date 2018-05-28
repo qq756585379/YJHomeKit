@@ -17,15 +17,6 @@
 
 @implementation YJBaseSettingController
 
-/*
- typedef NS_ENUM(NSInteger, UITableViewCellStyle) {
- UITableViewCellStyleDefault,    // Simple cell with text label and optional image view (behavior of UITableViewCell in iPhoneOS 2.x)（左边一张图 一个主题，不显示副主题）
- UITableViewCellStyleValue1,        // Left aligned label on left and right aligned label on right with blue text (Used in Settings)（左边一张图 一个主题，右边副主题）
- UITableViewCellStyleValue2,        // Right aligned label on left with blue text and left aligned label on right (Used in Phone/Contacts) (没有图片，这个属性一般不用)
- UITableViewCellStyleSubtitle    // Left aligned label on top and left aligned label on bottom with gray text (Used in iPod).（左边一张图 一个主题，下边副主题）
- };
- */
-
 - (void)viewDidLoad {
     [super viewDidLoad];
     

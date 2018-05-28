@@ -31,10 +31,6 @@
     return image;
 }
 
-+ (instancetype)yj_circleImage:(NSString *)name{
-    return [[self imageNamed:name] yj_circleImage];
-}
-
 + (UIImage *)imageWithName:(NSString *)name bundle:(NSBundle *)bundle ofType:(NSString *)type
 {
     UIImage *image = nil;

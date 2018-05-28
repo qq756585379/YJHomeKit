@@ -10,6 +10,7 @@
 #import <YJHomeKit/YJHomeKit.h>
 #import <MBProgressHUD/MBProgressHUD.h>
 #import <PureLayout/PureLayout.h>
+#import <React/RCTRootView.h>
 #import "YJExample.h"
 
 @interface ViewController ()<UITableViewDelegate,UITableViewDataSource>
@@ -36,7 +37,12 @@
 }
 
 -(void)configData{
-    self.examples = @[[YJExample exampleWithTitle:@"YJPhotoToolVC" selector:@"YJPhotoToolVC"],
+    self.examples = @[[YJExample exampleWithTitle:@"RunTimeVC" selector:@"RunTimeVC"],
+                      [YJExample exampleWithTitle:@"AVFoundationCameraVC" selector:@"AVFoundationCameraVC"],
+                      [YJExample exampleWithTitle:@"AVAudioRecorderVC" selector:@"AVAudioRecorderVC"],
+                      [YJExample exampleWithTitle:@"XiuXiuViewController" selector:@"XiuXiuViewController"],
+                      [YJExample exampleWithTitle:@"ReactAppTest" selector:@"ReactAppTest"],
+                      [YJExample exampleWithTitle:@"YJPhotoToolVC" selector:@"YJPhotoToolVC"],
                       [YJExample exampleWithTitle:@"YJWebViewController" selector:@"YJWebViewController"],
                       [YJExample exampleWithTitle:@"YJBaseSettingController" selector:@"YJBaseSettingController"],
                       [YJExample exampleWithTitle:@"YJTestSettingController" selector:@"YJTestSettingController"],
@@ -47,6 +53,51 @@
                       [YJExample exampleWithTitle:@"playSound" selector:@"playSound"],
                       [YJExample exampleWithTitle:@"AVPlayer" selector:@"aVPlayerExample"]];
     [self.tableView reloadData];
+}
+
+-(void)ReactAppTest
+{
+    NSLog(@"High Score Button Pressed");
+    NSURL *jsCodeLocation = [NSURL URLWithString:@"http://localhost:8081/index.bundle?platform=ios"];//要在RN443目录下执行npm start开启服务，真机调试需要改变域名
+    NSDictionary *json = @{
+                           @"scores" : @[
+                                   @{
+                                       @"name" : @"Alex",
+                                       @"value": @"42"
+                                       },
+                                   @{
+                                       @"name" : @"Joel",
+                                       @"value": @"10"
+                                       }
+                                   ]
+                           };
+    
+    RCTRootView *rootView =
+    [[RCTRootView alloc] initWithBundleURL : jsCodeLocation
+                         moduleName        : @"MyReactNativeApp"
+                         initialProperties : json
+                          launchOptions    : nil];
+    UIViewController *vc = [[UIViewController alloc] init];
+    vc.view = rootView;
+    [self presentViewController:vc animated:YES completion:nil];
+}
+
+-(void)RunTimeVC
+{
+    [self.navigationController pushViewController:[NSClassFromString(@"RunTimeVC") new] animated:YES];
+}
+
+-(void)AVFoundationCameraVC
+{
+    [self.navigationController pushViewController:[NSClassFromString(@"AVFoundationCameraVC") new] animated:YES];
+}
+
+-(void)AVAudioRecorderVC
+{
+    [self.navigationController pushViewController:[NSClassFromString(@"AVAudioRecorderVC") new] animated:YES];
+}
+-(void)XiuXiuViewController{
+    [self.navigationController pushViewController:[NSClassFromString(@"XiuXiuViewController") new] animated:YES];
 }
 
 -(void)YJTestSettingController{

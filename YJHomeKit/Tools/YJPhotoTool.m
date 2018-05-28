@@ -161,7 +161,6 @@
 {
     NSError *error = nil;
     __block NSString *assetID = nil;
-    //创建相册 [NSURL fileURLWithPath:path]
     PHAssetCollection *collection = [self sync_createNewAlbumCalled:albumName];
     [[PHPhotoLibrary sharedPhotoLibrary] performChanges:^{
         assetID = [PHAssetCreationRequest creationRequestForAssetFromVideoAtFileURL:videoUrl].placeholderForCreatedAsset.localIdentifier;

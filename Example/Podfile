@@ -30,4 +30,18 @@ target 'Example' do
     # 网络请求框架
     pod 'YTKNetwork'
     
+    # 打印 SDK
+    pod 'CocoaLumberjack'
+    
+    # RN
+    pod 'React', :path => '../RN443/node_modules/react-native', :subspecs => [
+    'Core',
+    'DevSupport', # 如果RN版本 >= 0.43，则需要加入此行才能开启开发者菜单
+    'RCTText',
+    'RCTNetwork',
+    'RCTWebSocket', # 这个模块是用于调试功能的
+    ]
+    # 如果你的RN版本 >= 0.42.0，则加入下面这行
+    pod 'Yoga', :path => '../RN443/node_modules/react-native/ReactCommon/yoga'
+    
 end
