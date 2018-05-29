@@ -7,22 +7,8 @@
 //
 
 #import "YJCommonTableCell.h"
-#import "YJMacro.h"
-#import "YJTool.h"
 
 @implementation YJCommonTableCellVO
-
--(UITableViewCellStyle)style{
-    return _style ? _style : UITableViewCellStyleDefault;
-}
-
--(YJCommonTableCellType)cellType{
-    return _cellType ? _cellType : YJCommonTableCellTypeArrow;
-}
-
--(CGFloat)cellHeight{
-    return _cellHeight ? _cellHeight : 50;
-}
 
 @end
 
@@ -49,17 +35,24 @@
         
         self.textLabel.numberOfLines = 0;
         self.detailTextLabel.numberOfLines = 0;
-
-        UIView *bg = [[UIView alloc] init];
-        bg.backgroundColor = [UIColor whiteColor];
-        self.backgroundView = bg;
         
-        // 设置cell选中状态的背景色
-        UIView *selBg = [[UIView alloc ]init];
-        selBg.backgroundColor = [UIColor colorWithRed:238/255.0f green:234/255.0f blue:223/255.0f alpha:1.0];
-        self.selectedBackgroundView = selBg;
+        self.rightLabel = [[UILabel alloc] init];
+        self.rightLabel.textAlignment = NSTextAlignmentRight;
+        self.rightLabel.font = [UIFont systemFontOfSize:12];
+        self.rightLabel.textColor = [UIColor lightGrayColor];
+        [self.contentView addSubview:self.rightLabel];
     }
     return self;
+}
+
+-(void)layoutSubviews{
+    [super layoutSubviews];
+    CGFloat screenW = [UIScreen mainScreen].bounds.size.width;
+    if (self.cellVO.cellType == YJCommonTableCellTypeArrow){
+        self.rightLabel.frame = CGRectMake(screenW - 135, 0, 100, self.frame.size.height);
+    }else{
+        self.rightLabel.frame = CGRectMake(screenW - 115, 0, 100, self.frame.size.height);
+    }
 }
 
 -(void)setCellVO:(YJCommonTableCellVO *)cellVO{
@@ -68,6 +61,7 @@
     self.imageView.image = cellVO.image;
     self.textLabel.text = cellVO.title;
     self.detailTextLabel.text = cellVO.detailTitle;
+    self.rightLabel.text = cellVO.rightTitle;
     
     if (cellVO.cellType == YJCommonTableCellRightIcon) {
         self.selectionStyle = UITableViewCellSelectionStyleDefault;
@@ -75,6 +69,7 @@
             _rightIcon =  [[UIImageView alloc] init];
         }
         _rightIcon.image = cellVO.rightImage;
+        [_rightIcon sizeToFit];
         self.accessoryView = _rightIcon;
     }else if (cellVO.cellType == YJCommonTableCellTypeArrow){ //右边是箭头
         self.selectionStyle = UITableViewCellSelectionStyleDefault;

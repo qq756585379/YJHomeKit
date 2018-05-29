@@ -27,11 +27,9 @@
         if (index==i) {
             style = UIAlertActionStyleDestructive;
         }
-        [alert addAction:[UIAlertAction actionWithTitle:buttons[i]
-                                                  style:style
-                                                handler:^(UIAlertAction *action) {
-                                                    aBlock(buttons[i],i);
-                                                }]];
+        [alert addAction:[UIAlertAction actionWithTitle:buttons[i] style:style handler:^(UIAlertAction *action) {
+            aBlock(buttons[i],i);
+        }]];
     }
     [alert addAction:[UIAlertAction actionWithTitle:aCancelButtonTitle style:UIAlertActionStyleCancel handler:nil]];
     
@@ -60,4 +58,5 @@
     }
     return window;
 }
+
 @end

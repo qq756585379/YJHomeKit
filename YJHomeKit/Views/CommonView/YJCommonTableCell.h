@@ -20,17 +20,14 @@ typedef enum {
 @interface YJCommonTableCellVO : NSObject
 @property (nonatomic,   copy) NSString *title;
 @property (nonatomic,   copy) NSString *detailTitle;
-
+@property (nonatomic,   copy) NSString *rightTitle;
 @property (nonatomic, strong) UIImage *image;
 @property (nonatomic, strong) UIImage *rightImage;
-
 @property (nonatomic, assign) BOOL isOn;
 @property (nonatomic, assign) BOOL selected;
 @property (nonatomic, assign) CGFloat cellHeight;
-
 @property (nonatomic, assign) UITableViewCellStyle style;
 @property (nonatomic, assign) YJCommonTableCellType cellType;// cell右边显示类型
-
 @property (nonatomic,   copy) void(^clickBlock)(YJCommonTableCell *cell);
 @property (nonatomic,   copy) void(^switchBlock)(NSIndexPath *indexPath,YJCommonTableCellVO *cellVO);
 @end
@@ -44,9 +41,7 @@ typedef enum {
 @end
 
 @interface YJCommonTableCell : YJTableViewCell
-
+@property (nonatomic, strong) UILabel *rightLabel;
 @property (nonatomic, strong) YJCommonTableCellVO *cellVO;
-
 + (instancetype)cellWithTableView:(UITableView *)tableView style:(UITableViewCellStyle)style;
-    
 @end

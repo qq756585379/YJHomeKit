@@ -51,7 +51,7 @@ typedef NS_ENUM(NSUInteger, IMIMappingClassPlatformType){
 /**
  *  进入此界面需要先登陆
  */
-@property (nonatomic) BOOL needLogin;
+@property (nonatomic, assign) BOOL needLogin;
 /**
  *  YES 就是present呈现界面，NO就是push界面
  */

@@ -177,6 +177,25 @@
 			path = Animation;
 			sourceTree = "<group>";
 		};
+		F52C9D4C20BD5AC60021662C /* classes */ = {
+			isa = PBXGroup;
+			children = (
+				F50B68B41FFC7A8F00183AB0 /* YJPhotoTool */,
+				F571FBB31FFF0B60002B7E25 /* Web-Test */,
+				F5F9A3D5200A1466005FBC66 /* SettingVC */,
+				F5AD94A720AEE2DA00B284C8 /* RunTime */,
+				F53702C21FFE0268007DF0AA /* RAC-Test */,
+				F50B68AD1FFC771C00183AB0 /* Model */,
+				F5AD94B920AF066500B284C8 /* AVPlayer */,
+				F5AD948520AECDF400B284C8 /* AVFoundationCamera */,
+				F5AD947020AEC59600B284C8 /* AVAudioRecorder */,
+				F5AD948120AECC2500B284C8 /* AVAssetImageGenerator */,
+				F513717620AAE7A600C5C69B /* Animation */,
+				F5B0085720BC250A00757ED2 /* MutliThread */,
+			);
+			path = classes;
+			sourceTree = "<group>";
+		};
 		F53663E71FEA3197008175CA = {
 			isa = PBXGroup;
 			children = (
@@ -198,28 +217,17 @@
 		F53663F21FEA3197008175CA /* Example */ = {
 			isa = PBXGroup;
 			children = (
-				F5B0085720BC250A00757ED2 /* MutliThread */,
-				F513717620AAE7A600C5C69B /* Animation */,
+				F52C9D4C20BD5AC60021662C /* classes */,
 				F53663F31FEA3197008175CA /* AppDelegate.h */,
 				F53663F41FEA3197008175CA /* AppDelegate.m */,
 				F53663FC1FEA3197008175CA /* Assets.xcassets */,
-				F5AD948120AECC2500B284C8 /* AVAssetImageGenerator */,
-				F5AD947020AEC59600B284C8 /* AVAudioRecorder */,
-				F5AD948520AECDF400B284C8 /* AVFoundationCamera */,
-				F5AD94B920AF066500B284C8 /* AVPlayer */,
 				F53664011FEA3197008175CA /* Info.plist */,
 				F53663FE1FEA3197008175CA /* LaunchScreen.storyboard */,
 				F53664021FEA3197008175CA /* main.m */,
 				F53663F91FEA3197008175CA /* Main.storyboard */,
-				F50B68AD1FFC771C00183AB0 /* Model */,
 				F5AD94B820AEE7C100B284C8 /* PrefixHeader.pch */,
-				F53702C21FFE0268007DF0AA /* RAC-Test */,
-				F5AD94A720AEE2DA00B284C8 /* RunTime */,
-				F5F9A3D5200A1466005FBC66 /* SettingVC */,
 				F53663F61FEA3197008175CA /* ViewController.h */,
 				F53663F71FEA3197008175CA /* ViewController.m */,
-				F571FBB31FFF0B60002B7E25 /* Web-Test */,
-				F50B68B41FFC7A8F00183AB0 /* YJPhotoTool */,
 			);
 			path = Example;
 			sourceTree = "<group>";
