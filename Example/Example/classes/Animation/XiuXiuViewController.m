@@ -11,6 +11,7 @@
 @interface XiuXiuViewController ()
 {
     UIView *_circleView;
+    UIButton *_button;
 }
 @end
 
@@ -20,13 +21,12 @@
     [super viewDidLoad];
     // 1. 设置背景颜色 35    39    63
     self.view.backgroundColor = [UIColor colorWithRed:35 / 255.0 green:39 / 255.0 blue:63 / 255.0 alpha:1.0];
+    self.view.backgroundColor = [UIColor whiteColor];
     // 2. 添加按钮
-    UIButton *button = [[UIButton alloc] init];
+    UIButton *button = [[UIButton alloc] initWithFrame:CGRectMake(200, 200, 60, 60)];
     [button setImage:[UIImage imageNamed:@"alipay_msp_op_success"] forState:UIControlStateNormal];
-    // 注意：先调整大小，再设置中心点
-    [button sizeToFit];
-    button.center = self.view.center;
     [self.view addSubview:button];
+    _button = button;
     // 3. 添加圆形视图
     _circleView = [self circleView];
     [self.view insertSubview:_circleView belowSubview:button];
@@ -34,8 +34,51 @@
     [button addTarget:self action:@selector(startXiuxiu:) forControlEvents:UIControlEventTouchUpInside];
 }
 
+- (void)addRippleLayer
+{
+    CAShapeLayer *rippleLayer = [[CAShapeLayer alloc] init];
+    rippleLayer.frame = self.view.frame;
+    rippleLayer.backgroundColor = [UIColor clearColor].CGColor;
+    rippleLayer.strokeColor = [UIColor greenColor].CGColor;
+    rippleLayer.lineWidth = 1.5;
+    [self.view.layer insertSublayer:rippleLayer below:_button.layer];
+    
+    CGRect beginRect = _button.frame;
+    CGRect endRect = CGRectInset(beginRect, -50, -50);
+    UIBezierPath *beginPath = [UIBezierPath bezierPathWithOvalInRect:beginRect];
+
+    UIBezierPath *endPath = [UIBezierPath bezierPathWithOvalInRect:endRect];
+    
+    rippleLayer.opacity = 0.0;
+    rippleLayer.path = endPath.CGPath;
+    
+    CABasicAnimation *rippleAnimation = [CABasicAnimation animationWithKeyPath:@"path"];
+    rippleAnimation.fromValue = (__bridge id _Nullable)(beginPath.CGPath);
+    rippleAnimation.toValue = (__bridge id _Nullable)(endPath.CGPath);
+    rippleAnimation.duration = 2.0;
+    
+    CABasicAnimation *opacityAnimation = [CABasicAnimation animationWithKeyPath:@"opacity"];
+    opacityAnimation.fromValue = [NSNumber numberWithFloat:0.6];
+    opacityAnimation.toValue = [NSNumber numberWithFloat:0.0];
+    opacityAnimation.duration = 2.0;
+    
+    [rippleLayer addAnimation:opacityAnimation forKey:@""];
+    [rippleLayer addAnimation:rippleAnimation forKey:@""];
+    
+    [self performSelector:@selector(removeRippleLayer:) withObject:rippleLayer afterDelay:2.0];
+}
+
+- (void)removeRippleLayer:(CAShapeLayer *)rippleLayer
+{
+    [rippleLayer removeFromSuperlayer];
+    rippleLayer = nil;
+}
+
 /// 开始咻一咻动画
 - (void)startXiuxiu:(UIButton *)button {
+    [self addRippleLayer];
+    return;
+    
     // 1. 修改圆形视图背景颜色 61    107    147
     _circleView.backgroundColor = [UIColor colorWithRed:61 / 255.0 green:107 / 255.0 blue:147 / 255.0 alpha:1.0];
     

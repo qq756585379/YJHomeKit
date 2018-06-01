@@ -27,25 +27,12 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    [self setAudioSession];
-}
-
-#pragma mark - 私有方法
-/**
- *  设置音频会话
- */
--(void)setAudioSession{
     AVAudioSession *audioSession = [AVAudioSession sharedInstance];
     //设置为播放和录音状态，以便可以在录制完之后播放录音
     [audioSession setCategory:AVAudioSessionCategoryPlayAndRecord error:nil];
     [audioSession setActive:YES error:nil];
 }
 
-/**
- *  取得录音文件保存路径
- *
- *  @return 录音文件路径
- */
 -(NSURL *)getSavePath{
     NSString *urlStr = [NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES) lastObject];
     urlStr = [urlStr stringByAppendingPathComponent:kRecordAudioFile];
@@ -54,11 +41,6 @@
     return url;
 }
 
-/**
- *  取得录音文件设置
- *
- *  @return 录音设置
- */
 -(NSDictionary *)getAudioSetting{
     NSMutableDictionary *dicM = [NSMutableDictionary dictionary];
     //设置录音格式
@@ -73,62 +55,6 @@
     [dicM setObject:@(YES) forKey:AVLinearPCMIsFloatKey];
     //....其他设置等
     return dicM;
-}
-
-/**
- *  获得录音机对象
- *
- *  @return 录音机对象
- */
--(AVAudioRecorder *)audioRecorder{
-    if (!_audioRecorder) {
-        //创建录音文件保存路径
-        NSURL *url = [self getSavePath];
-        //创建录音格式设置
-        NSDictionary *setting = [self getAudioSetting];
-        //创建录音机
-        NSError *error = nil;
-        _audioRecorder = [[AVAudioRecorder alloc] initWithURL:url settings:setting error:&error];
-        _audioRecorder.delegate = self;
-        _audioRecorder.meteringEnabled = YES;//如果要监控声波则必须设置为YES
-        if (error) {
-            NSLog(@"创建录音机对象时发生错误，错误信息：%@",error.localizedDescription);
-            return nil;
-        }
-    }
-    return _audioRecorder;
-}
-
-/**
- *  创建播放器
- *
- *  @return 播放器
- */
--(AVAudioPlayer *)audioPlayer{
-    if (!_audioPlayer) {
-        NSURL *url = [self getSavePath];
-        NSError *error = nil;
-        _audioPlayer = [[AVAudioPlayer alloc] initWithContentsOfURL:url error:&error];
-        _audioPlayer.numberOfLoops = 0;
-        [_audioPlayer prepareToPlay];
-        if (error) {
-            NSLog(@"创建播放器过程中发生错误，错误信息：%@",error.localizedDescription);
-            return nil;
-        }
-    }
-    return _audioPlayer;
-}
-
-/**
- *  录音声波监控定制器
- *
- *  @return 定时器
- */
--(NSTimer *)timer{
-    if (!_timer) {
-        _timer = [NSTimer scheduledTimerWithTimeInterval:0.1f target:self selector:@selector(audioPowerChange) userInfo:nil repeats:YES];
-    }
-    return _timer;
 }
 
 /**
@@ -199,6 +125,52 @@
         [self.audioPlayer play];
     }
     NSLog(@"录音完成!");
+}
+
+-(AVAudioRecorder *)audioRecorder{
+    if (!_audioRecorder) {
+        //创建录音文件保存路径
+        NSURL *url = [self getSavePath];
+        //创建录音格式设置
+        NSDictionary *setting = [self getAudioSetting];
+        //创建录音机
+        NSError *error = nil;
+        _audioRecorder = [[AVAudioRecorder alloc] initWithURL:url settings:setting error:&error];
+        _audioRecorder.delegate = self;
+        _audioRecorder.meteringEnabled = YES;//如果要监控声波则必须设置为YES
+        if (error) {
+            NSLog(@"创建录音机对象时发生错误，错误信息：%@",error.localizedDescription);
+            return nil;
+        }
+    }
+    return _audioRecorder;
+}
+
+-(AVAudioPlayer *)audioPlayer{
+    if (!_audioPlayer) {
+        NSURL *url = [self getSavePath];
+        NSError *error = nil;
+        _audioPlayer = [[AVAudioPlayer alloc] initWithContentsOfURL:url error:&error];
+        _audioPlayer.numberOfLoops = 0;
+        [_audioPlayer prepareToPlay];
+        if (error) {
+            NSLog(@"创建播放器过程中发生错误，错误信息：%@",error.localizedDescription);
+            return nil;
+        }
+    }
+    return _audioPlayer;
+}
+
+/**
+ *  录音声波监控定制器
+ *
+ *  @return 定时器
+ */
+-(NSTimer *)timer{
+    if (!_timer) {
+        _timer = [NSTimer scheduledTimerWithTimeInterval:0.1f target:self selector:@selector(audioPowerChange) userInfo:nil repeats:YES];
+    }
+    return _timer;
 }
 
 @end
