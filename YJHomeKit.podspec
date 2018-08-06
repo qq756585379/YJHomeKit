@@ -20,7 +20,6 @@ Pod::Spec.new do |s|
   # s.authors            = { "杨俊" => "756585379@qq.com" }
   # s.social_media_url   = "http://twitter.com/杨俊"
 
-  s.platform     = :ios
   s.platform     = :ios, "9.0"
 
   #  When using multiple platforms
