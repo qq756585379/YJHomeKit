@@ -184,7 +184,6 @@
 				F571FBB31FFF0B60002B7E25 /* Web-Test */,
 				F5F9A3D5200A1466005FBC66 /* SettingVC */,
 				F5AD94A720AEE2DA00B284C8 /* RunTime */,
-				F53702C21FFE0268007DF0AA /* RAC-Test */,
 				F50B68AD1FFC771C00183AB0 /* Model */,
 				F5AD94B920AF066500B284C8 /* AVPlayer */,
 				F5AD948520AECDF400B284C8 /* AVFoundationCamera */,
@@ -230,13 +229,6 @@
 				F53663F71FEA3197008175CA /* ViewController.m */,
 			);
 			path = Example;
-			sourceTree = "<group>";
-		};
-		F53702C21FFE0268007DF0AA /* RAC-Test */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = "RAC-Test";
 			sourceTree = "<group>";
 		};
 		F571FBB31FFF0B60002B7E25 /* Web-Test */ = {
@@ -662,7 +654,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 4S7HJ2TM84;
-				GCC_PREFIX_HEADER = "$SRCROOT/Example/PrefixHeader.pch";
+				GCC_PREFIX_HEADER = $SRCROOT/Example/PrefixHeader.pch;
 				INFOPLIST_FILE = Example/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
@@ -679,7 +671,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 4S7HJ2TM84;
-				GCC_PREFIX_HEADER = "$SRCROOT/Example/PrefixHeader.pch";
+				GCC_PREFIX_HEADER = $SRCROOT/Example/PrefixHeader.pch;
 				INFOPLIST_FILE = Example/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
