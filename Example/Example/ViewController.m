@@ -10,7 +10,7 @@
 #import <YJHomeKit/YJHomeKit.h>
 #import <MBProgressHUD/MBProgressHUD.h>
 #import <PureLayout/PureLayout.h>
-#import <React/RCTRootView.h>
+//#import <React/RCTRootView.h>
 #import "YJExample.h"
 
 @interface ViewController ()<UITableViewDelegate,UITableViewDataSource>
@@ -55,32 +55,32 @@
     [self.tableView reloadData];
 }
 
--(void)ReactAppTest
-{
-    NSLog(@"High Score Button Pressed");
-    NSURL *jsCodeLocation = [NSURL URLWithString:@"http://localhost:8081/index.bundle?platform=ios"];//要在RN443目录下执行npm start开启服务，真机调试需要改变域名
-    NSDictionary *json = @{
-                           @"scores" : @[
-                                   @{
-                                       @"name" : @"Alex",
-                                       @"value": @"42"
-                                       },
-                                   @{
-                                       @"name" : @"Joel",
-                                       @"value": @"10"
-                                       }
-                                   ]
-                           };
-    
-    RCTRootView *rootView =
-    [[RCTRootView alloc] initWithBundleURL : jsCodeLocation
-                         moduleName        : @"MyReactNativeApp"
-                         initialProperties : json
-                          launchOptions    : nil];
-    UIViewController *vc = [[UIViewController alloc] init];
-    vc.view = rootView;
-    [self presentViewController:vc animated:YES completion:nil];
-}
+//-(void)ReactAppTest
+//{
+//    NSLog(@"High Score Button Pressed");
+//    NSURL *jsCodeLocation = [NSURL URLWithString:@"http://localhost:8081/index.bundle?platform=ios"];//要在RN443目录下执行npm start开启服务，真机调试需要改变域名
+//    NSDictionary *json = @{
+//                           @"scores" : @[
+//                                   @{
+//                                       @"name" : @"Alex",
+//                                       @"value": @"42"
+//                                       },
+//                                   @{
+//                                       @"name" : @"Joel",
+//                                       @"value": @"10"
+//                                       }
+//                                   ]
+//                           };
+//
+//    RCTRootView *rootView =
+//    [[RCTRootView alloc] initWithBundleURL : jsCodeLocation
+//                         moduleName        : @"MyReactNativeApp"
+//                         initialProperties : json
+//                          launchOptions    : nil];
+//    UIViewController *vc = [[UIViewController alloc] init];
+//    vc.view = rootView;
+//    [self presentViewController:vc animated:YES completion:nil];
+//}
 
 -(void)RunTimeVC
 {

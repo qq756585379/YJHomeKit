@@ -115,7 +115,6 @@
     return self.frame.origin.y;
 }
 
-/**top*/
 - (CGFloat)top{
     return self.frame.origin.y;
 }
@@ -124,7 +123,7 @@
     newframe.origin.y = newtop;
     self.frame = newframe;
 }
-/**left*/
+
 - (CGFloat)left{
     return self.frame.origin.x;
 }
@@ -133,7 +132,7 @@
     newframe.origin.x = newleft;
     self.frame = newframe;
 }
-/**bottom*/
+
 - (CGFloat) bottom{
     return self.frame.origin.y + self.frame.size.height;
 }
@@ -142,7 +141,7 @@
     newframe.origin.y = newbottom - self.frame.size.height;
     self.frame = newframe;
 }
-/**right*/
+
 - (CGFloat) right{
     return self.frame.origin.x + self.frame.size.width;
 }

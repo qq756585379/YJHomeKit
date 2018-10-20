@@ -23,10 +23,7 @@
                                                                    message:aMessage
                                                             preferredStyle:UIAlertControllerStyleActionSheet];
     for (int i=0; i<buttons.count; i++) {
-        UIAlertActionStyle style = UIAlertActionStyleDefault;
-        if (index==i) {
-            style = UIAlertActionStyleDestructive;
-        }
+        UIAlertActionStyle style = (index == i) ? UIAlertActionStyleDestructive : UIAlertActionStyleDefault;
         [alert addAction:[UIAlertAction actionWithTitle:buttons[i] style:style handler:^(UIAlertAction *action) {
             aBlock(buttons[i],i);
         }]];

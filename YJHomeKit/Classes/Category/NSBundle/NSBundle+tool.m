@@ -9,7 +9,8 @@
 
 @implementation NSBundle (tool)
 
-+ (NSBundle *)bundleWithName:(NSString *)bundlename{
++ (NSBundle *)bundleWithName:(NSString *)bundlename
+{
     NSString *mainBundlePath = [[NSBundle mainBundle] resourcePath];
     NSString *frameworkBundlePath = [mainBundlePath stringByAppendingPathComponent:bundlename];
     if ([[NSFileManager defaultManager] fileExistsAtPath:frameworkBundlePath]){

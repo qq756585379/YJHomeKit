@@ -7,7 +7,7 @@
 
 #import <Foundation/Foundation.h>
 
-typedef void(^YJActionSheetBlock)(NSString *title,NSInteger index);
+typedef void(^YJActionSheetBlock)(NSString *title, NSInteger index);
 
 @interface YJAlertSheet : NSObject
 

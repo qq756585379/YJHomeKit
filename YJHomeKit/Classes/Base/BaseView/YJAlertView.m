@@ -10,13 +10,15 @@
 @implementation YJAlertView
 
 + (void)alertWithMessage:(NSString *)aMessage
-        andCompleteBlock:(YJAlertViewBlock)aBlock{
+        andCompleteBlock:(YJAlertViewBlock)aBlock
+{
     [self alertWithTitle:nil message:aMessage andCompleteBlock:aBlock];
 }
 
 + (void)alertWithTitle:(NSString *)aTitle
                message:(NSString *)aMessage
-      andCompleteBlock:(YJAlertViewBlock)aBlock{
+      andCompleteBlock:(YJAlertViewBlock)aBlock
+{
     [self alertWithTitle:aTitle message:aMessage leftBtn:nil rightBtn:@"确定" andCompleteBlock:aBlock];
 }
 
@@ -24,8 +26,8 @@
                message:(NSString *)aMessage
                leftBtn:(NSString *)leftBtnName
               rightBtn:(NSString *)rightBtnName
-      andCompleteBlock:(YJAlertViewBlock)aBlock{
-    
+      andCompleteBlock:(YJAlertViewBlock)aBlock
+{
     if (!aMessage) aMessage=@"";
     if (!aTitle) aTitle=@"";
     
