@@ -9,25 +9,30 @@
 
 @implementation YJCollectionViewCell
 
-+ (NSString *)cellReuseIdentifier{
++ (NSString *)cellReuseIdentifier
+{
     return NSStringFromClass([self class]);
 }
 
-+ (UINib *)nib{
++ (UINib *)nib
+{
     NSString *className = NSStringFromClass([self class]);
     return [UINib nibWithNibName:className bundle:nil];
 }
 
-+ (UINib *)nibInBundle:(NSBundle *)bundle{
++ (UINib *)nibInBundle:(NSBundle *)bundle
+{
     NSString *className = NSStringFromClass([self class]);
     return [UINib nibWithNibName:className bundle:bundle];
 }
 
-- (void)updateWithCellData:(id)aData{
+- (void)updateWithCellData:(id)aData
+{
     
 }
 
-- (void)updateWithCellData:(id)aData atIndexPath:(NSIndexPath *)indexPath{
+- (void)updateWithCellData:(id)aData atIndexPath:(NSIndexPath *)indexPath
+{
     
 }
 
@@ -37,7 +42,8 @@
 }
 
 //这个方法如果滥用，会很恐怖。。。所以不能公开
-- (UICollectionView *)__getCollectionView{
+- (UICollectionView *)__getCollectionView
+{
     static int level = 10;
     UICollectionView *collectionView = nil;
     
@@ -57,7 +63,8 @@
     return collectionView;
 }
 
-- (NSIndexPath *)indexPath{
+- (NSIndexPath *)indexPath
+{
     if (_indexPath) {
         return _indexPath;
     }
@@ -65,7 +72,8 @@
     return _indexPath;
 }
 
-- (void)dealloc{
+- (void)dealloc
+{
     [[NSNotificationCenter defaultCenter] removeObserver:self];
 }
 

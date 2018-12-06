@@ -9,29 +9,35 @@
 
 @implementation YJCollectionReusableView
 
-+ (NSString *)reuseIdentifier{
++ (NSString *)reuseIdentifier
+{
     return NSStringFromClass([self class]);
 }
 
-+ (UINib *)nib{
++ (UINib *)nib
+{
     NSString *className = NSStringFromClass([self class]);
     return [UINib nibWithNibName:className bundle:nil];
 }
 
-+ (UINib *)nibInBundle:(NSBundle *)bundle{
++ (UINib *)nibInBundle:(NSBundle *)bundle
+{
     NSString *className = NSStringFromClass([self class]);
     return [UINib nibWithNibName:className bundle:bundle];
 }
 
-- (void)updateWithCellData:(id)aData{
+- (void)updateWithCellData:(id)aData
+{
     
 }
 
-+ (CGSize)sizeForCellData:(id)aData{
++ (CGSize)sizeForCellData:(id)aData
+{
     return CGSizeZero;
 }
 
-- (void)dealloc{
+- (void)dealloc
+{
     [[NSNotificationCenter defaultCenter] removeObserver:self];
 }
 

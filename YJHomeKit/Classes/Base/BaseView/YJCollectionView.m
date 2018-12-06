@@ -11,7 +11,8 @@
 
 @implementation YJCollectionView
 
-- (id)dequeueReusableCellWithReuseIdentifier:(NSString *)identifier forIndexPath:(NSIndexPath *)indexPath{
+- (id)dequeueReusableCellWithReuseIdentifier:(NSString *)identifier forIndexPath:(NSIndexPath *)indexPath
+{
     UICollectionViewCell *cell = [super dequeueReusableCellWithReuseIdentifier:identifier forIndexPath:indexPath];
     if ([cell isKindOfClass:[YJCollectionViewCell class]]) {
         [(YJCollectionViewCell *)cell setIndexPath:indexPath];
@@ -32,11 +33,13 @@
     return cell;
 }
 
-- (void)dealloc{
+- (void)dealloc
+{
     [[NSNotificationCenter defaultCenter] removeObserver:self];
 }
 
-- (void)reloadData{
+- (void)reloadData
+{
     [self.collectionViewLayout invalidateLayout];
     [super reloadData];
 }

@@ -58,7 +58,8 @@
     [[[self window] rootViewController] presentViewController:alertController animated:YES completion:nil];
 }
 
-+ (UIWindow *) window {
++ (UIWindow *) window
+{
     UIWindow *window = [UIApplication sharedApplication].keyWindow;
     if (window  == nil) {
         if ([[UIApplication sharedApplication].delegate respondsToSelector:@selector(window)]) {

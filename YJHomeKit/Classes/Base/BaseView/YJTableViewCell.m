@@ -9,8 +9,10 @@
 
 @implementation YJTableViewCell
 
-- (instancetype)initWithStyle:(UITableViewCellStyle)style reuseIdentifier:(NSString *)reuseIdentifier{
-    if (self = [super initWithStyle:style reuseIdentifier:reuseIdentifier]) {
+- (instancetype)initWithStyle:(UITableViewCellStyle)style reuseIdentifier:(NSString *)reuseIdentifier
+{
+    if (self = [super initWithStyle:style reuseIdentifier:reuseIdentifier])
+    {
         self.separatorInset = UIEdgeInsetsZero;
     }
     return self;
@@ -43,7 +45,8 @@
     return 0;
 }
 
-- (CGFloat)getCellHeight{
+- (CGFloat)getCellHeight
+{
     [self layoutIfNeeded];
     [self updateConstraintsIfNeeded];
     CGSize size = [self.contentView systemLayoutSizeFittingSize:UILayoutFittingCompressedSize];

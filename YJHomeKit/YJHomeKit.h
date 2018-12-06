@@ -12,7 +12,6 @@
 #import <YJHomeKit/YJTool.h>
 #import <YJHomeKit/YJMacro.h>
 #import <YJHomeKit/YJColor.h>
-#import <YJHomeKit/YJRouter.h>
 #import <YJHomeKit/YJTabBar.h>
 #import <YJHomeKit/UIView+YJ.h>
 #import <YJHomeKit/YJTableView.h>
