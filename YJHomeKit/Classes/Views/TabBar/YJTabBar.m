@@ -12,10 +12,8 @@
 #import "YJTabBarItem.h"
 
 @interface YJTabBar () <YJTabBarItemDelegate>
-@property (nonatomic,   copy) NSArray *items;
 @property (nonatomic, strong) UIView *backgroundView;
 @property (nonatomic, strong) UIImageView *backgroundImageView;
-@property (nonatomic, strong) YJTabBarItem *selectedItem;
 @end
 
 @implementation YJTabBar
@@ -41,14 +39,8 @@
     self.backgroundImageView.image = backgroundImage;
 }
 
-- (void)setItems:(NSArray *)items{
-    for (id object in items) {
-        if (![object isKindOfClass:[YJTabBarItem class]]) {
-            NSLog(@"%@ is not kind of YJTabBarItem",object);
-            return ;
-        }
-    }
-    
+- (void)setItems:(NSArray <YJTabBarItem *>*)items
+{
     [_items makeObjectsPerformSelector:@selector(removeFromSuperview)];
     _items = [items copy];
     self.selectedItem = _items[0];
@@ -66,7 +58,8 @@
     }];
 }
 
-- (void)setSelectedItem:(YJTabBarItem *)selectedItem{
+- (void)setSelectedItem:(YJTabBarItem *)selectedItem
+{
     if (_selectedItem == selectedItem) {
         _selectedItem.selected = YES;
         return ;
@@ -76,18 +69,21 @@
     _selectedItem.selected = YES;
 }
 
-- (NSUInteger)selectedIndex{
+- (NSUInteger)selectedIndex
+{
     return self.selectedItem.tag;
 }
 
-- (void)setSelectedIndex:(NSUInteger)selectedIndex{
+- (void)setSelectedIndex:(NSUInteger)selectedIndex
+{
     if (self.delegate && [self.delegate respondsToSelector:@selector(customTabBar:didSelectItem:)]) {
         [self.delegate customTabBar:self didSelectItem:_items[selectedIndex]];
     }
 }
 
 #pragma mark - YJTabBarItemDelegate
-- (void)tabBarItemDidSelectItem:(YJTabBarItem *)item{
+- (void)tabBarItemDidSelectItem:(YJTabBarItem *)item
+{
     if (self.delegate && [self.delegate respondsToSelector:@selector(customTabBar:didSelectItem:)]) {
         [self.delegate customTabBar:self didSelectItem:item];
     }

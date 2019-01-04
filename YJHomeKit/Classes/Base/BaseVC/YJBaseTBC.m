@@ -5,9 +5,15 @@
 //  Created by 杨俊 on 2018/2/27.
 //
 
-#import "BaseTabBarController.h"
+#import "YJBaseTBC.h"
 
-@implementation BaseTabBarController
+@implementation YJBaseTBC
+
+- (void)viewDidLoad {
+    [super viewDidLoad];
+    self.delegate = self;
+    self.view.backgroundColor = [UIColor whiteColor];
+}
 
 - (void)updateViewController:(UIViewController *)aVC atIndex:(NSUInteger)aIndex
 {

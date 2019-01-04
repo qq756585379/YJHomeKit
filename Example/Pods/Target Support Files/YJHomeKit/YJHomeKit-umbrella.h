@@ -12,6 +12,7 @@
 
 #import "YJHomeKit.h"
 #import "BaseTabBarController.h"
+#import "BaseViewController.h"
 #import "YJAlertSheet.h"
 #import "YJAlertView.h"
 #import "YJCollectionReusableView.h"

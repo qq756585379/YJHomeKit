@@ -10,10 +10,6 @@
 #import "YJColor.h"
 
 @interface YJTabBarItem ()
-@property (nonatomic, strong) UIImageView *background;
-@property (nonatomic, strong) UILabel *titleLabel;
-@property (nonatomic, strong) UILabel *badgeLabel;
-@property (nonatomic, strong) UIView *indicateView;
 @property (nonatomic, strong) NSLayoutConstraint *hConstraint;
 @property (nonatomic, strong) NSLayoutConstraint *vConstraint;
 @property (nonatomic, strong) NSLayoutConstraint *backgroundWidthConstraint;
@@ -22,7 +18,8 @@
 
 @implementation YJTabBarItem
 
-+ (instancetype)itemWithTitle:(NSString *)title image:(UIImage *)image selectedImage:(UIImage *)selectedImage{
++ (instancetype)itemWithTitle:(NSString *)title image:(UIImage *)image selectedImage:(UIImage *)selectedImage
+{
     YJTabBarItem *item = [[self alloc] initWithFrame:CGRectZero];
     item.title = title;
     item.image = image;
@@ -34,7 +31,7 @@
     if (self = [super initWithFrame:frame]) {
         self.clipsToBounds = YES;
         self.imageInsets = UIEdgeInsetsZero;
-        [self _tabBarItem_setupViews];
+        [self tabBarItem_setupViews];
         self.userInteractionEnabled = YES;
         UITapGestureRecognizer *ges = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(onPressTabbarItem)];
         [self addGestureRecognizer:ges];
@@ -42,25 +39,25 @@
     return self;
 }
 
-- (void)_tabBarItem_setupViews{
+- (void)tabBarItem_setupViews
+{
     self.background = [[UIImageView alloc] initWithFrame:CGRectZero];
     self.background.backgroundColor = [UIColor clearColor];
     self.background.contentMode = UIViewContentModeScaleToFill;
-    [self addSubview:self.background];
     self.background.translatesAutoresizingMaskIntoConstraints = NO;
+    [self addSubview:self.background];
     
     self.hConstraint = [NSLayoutConstraint constraintWithItem:self.background attribute:NSLayoutAttributeCenterX relatedBy:NSLayoutRelationEqual
                                                        toItem:self attribute:NSLayoutAttributeCenterX multiplier:1.f constant:0.f];
-    [self addConstraint:self.hConstraint];
     self.vConstraint = [NSLayoutConstraint constraintWithItem:self.background attribute:NSLayoutAttributeCenterY relatedBy:NSLayoutRelationEqual
                                                        toItem:self attribute:NSLayoutAttributeCenterY multiplier:1.f constant:0.f];
-    [self addConstraint:self.vConstraint];
-    
     self.backgroundWidthConstraint = [NSLayoutConstraint constraintWithItem:self.background attribute:NSLayoutAttributeWidth relatedBy:NSLayoutRelationEqual
                                                                      toItem:nil attribute:NSLayoutAttributeNotAnAttribute multiplier:1.f constant:24.f];
-    [self addConstraint:self.backgroundWidthConstraint];
     self.backgroundHeightConstraint = [NSLayoutConstraint constraintWithItem:self.background attribute:NSLayoutAttributeHeight relatedBy:NSLayoutRelationEqual
                                                                       toItem:nil attribute:NSLayoutAttributeNotAnAttribute multiplier:1.f constant:24.f];
+    [self addConstraint:self.hConstraint];
+    [self addConstraint:self.vConstraint];
+    [self addConstraint:self.backgroundWidthConstraint];
     [self addConstraint:self.backgroundHeightConstraint];
     
     self.titleLabel = [[UILabel alloc] initWithFrame:CGRectZero];
@@ -68,13 +65,13 @@
     self.titleLabel.backgroundColor = [UIColor clearColor];
     self.titleLabel.font = [UIFont systemFontOfSize:10.f];
     self.titleLabel.textColor = [UIColor colorWithRed:1.0 green:1.0 blue:1.0 alpha:.6];
-    [self addSubview:self.titleLabel];
     self.titleLabel.translatesAutoresizingMaskIntoConstraints = NO;
-    
+    [self addSubview:self.titleLabel];
     [self addConstraint:[NSLayoutConstraint constraintWithItem:self.titleLabel attribute:NSLayoutAttributeCenterX relatedBy:NSLayoutRelationEqual
                                                         toItem:self attribute:NSLayoutAttributeCenterX multiplier:1.f constant:0.f]];
     [self addConstraint:[NSLayoutConstraint constraintWithItem:self.titleLabel attribute:NSLayoutAttributeBottom relatedBy:NSLayoutRelationEqual
                                                         toItem:self attribute:NSLayoutAttributeBottom multiplier:1.f constant:-4.f]];
+    
     
     self.badgeLabel = [[UILabel alloc] initWithFrame:CGRectZero];
     self.badgeLabel.textAlignment = NSTextAlignmentCenter;
@@ -86,8 +83,8 @@
     self.badgeLabel.clipsToBounds = YES;
     self.badgeLabel.layer.cornerRadius = 7.f;
     self.badgeLabel.hidden = YES;
-    [self addSubview:self.badgeLabel];
     self.badgeLabel.translatesAutoresizingMaskIntoConstraints = NO;
+    [self addSubview:self.badgeLabel];
     
     [self addConstraint:[NSLayoutConstraint constraintWithItem:self.badgeLabel attribute:NSLayoutAttributeTop relatedBy:NSLayoutRelationEqual
                                                         toItem:self attribute:NSLayoutAttributeTop multiplier:1.f constant:3.f]];
@@ -185,6 +182,7 @@
     _showWord = showWord;
     self.titleLabel.hidden = !showWord;
     self.imageInsets = UIEdgeInsetsMake(0, 0, showWord ? 6 : 0, 0);
+    [self _tabBarItem_resizeViews];
 }
 
 - (void)onPressTabbarItem{

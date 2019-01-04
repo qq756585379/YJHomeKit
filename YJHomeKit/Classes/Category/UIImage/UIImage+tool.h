@@ -14,6 +14,9 @@
  */
 - (instancetype)yj_circleImage;
 
+//返回纯色的图片
++ (UIImage *)imageWithColor:(UIColor *)aColor;
++ (UIImage *)imageWithColor:(UIColor *)aColor withFrame:(CGRect)aFrame;
 + (UIImage *)imageWithName:(NSString *)name bundle:(NSBundle *)bundle ofType:(NSString *)type;
 
 @end

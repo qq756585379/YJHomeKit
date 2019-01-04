@@ -25,12 +25,15 @@
 #import <YJHomeKit/YJCollectionView.h>
 #import <YJHomeKit/NSObject+Runtime.h>
 #import <YJHomeKit/YJCommonTableCell.h>
+#import <YJHomeKit/YJBaseVC.h>
 #import <YJHomeKit/UIBarButtonItem+YJ.h>
 #import <YJHomeKit/YJCollectionViewCell.h>
-#import <YJHomeKit/BaseTabBarController.h>
+#import <YJHomeKit/YJBaseTBC.h>
 #import <YJHomeKit/NSObject+PerformBlock.h>
 #import <YJHomeKit/UIViewController+tool.h>
 #import <YJHomeKit/YJCollectionReusableView.h>
+
+
 
 
 

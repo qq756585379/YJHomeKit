@@ -13,6 +13,7 @@
  *  存储数据到userdefault
  */
 + (void)setValue:(id)anObject forKey:(NSString *)aKey;
+
 /**
  *  从userdefault获取数据
  */

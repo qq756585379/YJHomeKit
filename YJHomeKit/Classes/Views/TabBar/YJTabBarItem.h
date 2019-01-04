@@ -6,7 +6,6 @@
 //
 
 #import <UIKit/UIKit.h>
-
 @class YJTabBarItem;
 
 @protocol YJTabBarItemDelegate <NSObject>
@@ -14,6 +13,12 @@
 @end
 
 @interface YJTabBarItem : UIView
+
+@property (nonatomic, strong) UILabel *titleLabel;
+@property (nonatomic, strong) UILabel *badgeLabel;
+@property (nonatomic, strong) UIView *indicateView;
+@property (nonatomic, strong) UIImageView *background;
+
 /**
  *  标题
  */
@@ -50,6 +55,7 @@
  *  代理
  */
 @property (nonatomic, weak) id<YJTabBarItemDelegate> delegate;
+
 /**
  *  创建函数
  *

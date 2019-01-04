@@ -24,4 +24,6 @@
 //随机颜色
 + (UIColor *)randomColor;
 
++ (UIColor *)hex:(NSString *)hexString;
+
 @end
