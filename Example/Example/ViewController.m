@@ -13,7 +13,7 @@
 //#import <React/RCTRootView.h>
 #import "YJExample.h"
 
-@interface ViewController ()<UITableViewDelegate,UITableViewDataSource>
+@interface ViewController ()<UITableViewDelegate,UITableViewDataSource,YJRefreshHeaderViewDelegate>
 @property (strong, nonatomic) YJRefreshHeader *refreshHeaderView;
 @property (nonatomic, strong) UITableView *tableView;
 @property (strong, nonatomic) NSDate *lastUpdateDate;
@@ -55,9 +55,8 @@
     [self.tableView reloadData];
 }
 
-//-(void)ReactAppTest
-//{
-//    NSLog(@"High Score Button Pressed");
+-(void)ReactAppTest
+{
 //    NSURL *jsCodeLocation = [NSURL URLWithString:@"http://localhost:8081/index.bundle?platform=ios"];//要在RN443目录下执行npm start开启服务，真机调试需要改变域名
 //    NSDictionary *json = @{
 //                           @"scores" : @[
@@ -80,7 +79,7 @@
 //    UIViewController *vc = [[UIViewController alloc] init];
 //    vc.view = rootView;
 //    [self presentViewController:vc animated:YES completion:nil];
-//}
+}
 
 -(void)RunTimeVC
 {

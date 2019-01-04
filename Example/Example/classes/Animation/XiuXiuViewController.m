@@ -77,8 +77,7 @@
 /// 开始咻一咻动画
 - (void)startXiuxiu:(UIButton *)button {
     [self addRippleLayer];
-    return;
-    
+ 
     // 1. 修改圆形视图背景颜色 61    107    147
     _circleView.backgroundColor = [UIColor colorWithRed:61 / 255.0 green:107 / 255.0 blue:147 / 255.0 alpha:1.0];
     

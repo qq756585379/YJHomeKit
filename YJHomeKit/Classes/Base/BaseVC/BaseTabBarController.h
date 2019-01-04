@@ -7,6 +7,11 @@
 
 #import <UIKit/UIKit.h>
 
-@interface BaseTabBarController : UITabBarController
+@interface BaseTabBarController : UITabBarController <UITabBarControllerDelegate>
+
+/**
+ *  更新某个index的tab
+ */
+- (void)updateViewController:(UIViewController *)aVC atIndex:(NSUInteger)aIndex;
 
 @end

@@ -13,6 +13,7 @@
 #import "JLRoutes.h"
 #import "JLRParsingUtilities.h"
 #import "JLRRouteDefinition.h"
+#import "JLRRouteHandler.h"
 #import "JLRRouteRequest.h"
 #import "JLRRouteResponse.h"
 

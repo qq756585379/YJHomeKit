@@ -51,6 +51,12 @@
 #import "YJVideoContainer.h"
 #import "YJVideoPlayer.h"
 #import "YJVideoPlayerBar.h"
+#import "NSString+YJRoute.h"
+#import "UIView+YJRoute.h"
+#import "UIViewController+YJRoute.h"
+#import "YJMappingVO.h"
+#import "YJRouter.h"
+#import "YJRouterData.h"
 
 FOUNDATION_EXPORT double YJHomeKitVersionNumber;
 FOUNDATION_EXPORT const unsigned char YJHomeKitVersionString[];

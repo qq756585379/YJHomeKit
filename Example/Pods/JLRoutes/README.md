@@ -10,8 +10,6 @@ JLRoutes
 ### What is it? ###
 JLRoutes is a URL routing library with a simple block-based API. It is designed to make it very easy to handle complex URL schemes in your application with minimal code.
 
-[More information on how to register custom URL schemes in your application's Info.plist.](https://developer.apple.com/library/ios/documentation/iPhone/Conceptual/iPhoneOSProgrammingGuide/Inter-AppCommunication/Inter-AppCommunication.html#//apple_ref/doc/uid/TP40007072-CH6-SW2)
-
 ### Installation ###
 JLRoutes is available for installation using [CocoaPods](https://cocoapods.org/pods/JLRoutes) or Carthage (add `github "joeldev/JLRoutes"` to your `Cartfile`).
 
@@ -22,13 +20,14 @@ JLRoutes 2.x require iOS 8.0+ or macOS 10.10+. If you need to support iOS 7 or m
 Documentation is available [here](http://cocoadocs.org/docsets/JLRoutes/).
 
 ### Getting Started ###
-```objc
-// in your app delegate:
 
+[Configure your URL schemes in Info.plist.](https://developer.apple.com/library/ios/documentation/iPhone/Conceptual/iPhoneOSProgrammingGuide/Inter-AppCommunication/Inter-AppCommunication.html#//apple_ref/doc/uid/TP40007072-CH6-SW2)
+
+```objc
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
-  // ...
   JLRoutes *routes = [JLRoutes globalRoutes];
+
   [routes addRoute:@"/user/view/:userID" handler:^BOOL(NSDictionary *parameters) {
     NSString *userID = parameters[@"userID"]; // defined in the route by specifying ":userID"
 
@@ -36,7 +35,7 @@ Documentation is available [here](http://cocoadocs.org/docsets/JLRoutes/).
 
     return YES; // return YES to say we have handled the route
   }];
-  // ...
+
   return YES;
 }
 
@@ -48,18 +47,16 @@ Documentation is available [here](http://cocoadocs.org/docsets/JLRoutes/).
 
 Routes can also be registered with subscripting syntax:
 ```objc
-JLRoutes.globalRoutes[@"/route/:param"] = ^BOOL(NSDictionary *parameters) {
+JLRoutes.globalRoutes[@"/user/view/:userID"] = ^BOOL(NSDictionary *parameters) {
   // ...
 };
 ```
 
-After having set that route up, at any point something (including a different application) could call this to fire the handler block:
+After adding a route for `/user/view/:userID`, the following call will cause the handler block to be called with a dictionary containing `@"userID": @"joeldev"`:
 ```objc
 NSURL *viewUserURL = [NSURL URLWithString:@"myapp://user/view/joeldev"];
-[[UIApplication sharedApplication] openURL:viewUserURL];
+[JLRoutes routeURL:viewUserURL];
 ```
-
-In this example, the userID object in the parameters dictionary passed to the block would have the key/value pair `"userID": "joeldev"`, which could then be used to present a UI or do whatever else is needed.
 
 ### The Parameters Dictionary ###
 
@@ -76,11 +73,34 @@ The JLRouteScheme key refers to the scheme that the matched route lives in. [Rea
 
 See JLRoutes.h for the list of constants.
 
-### Handler Block ###
+### Handler Block Chaining ###
 
-As you may have noticed, the handler block is expected to return a boolean for if it has handled the route or not. If the block returns `NO`, JLRoutes will behave as if that route is not a match and it will continue looking for a match. A route is considered to be a match if the pattern string matches **and** the block returns `YES`.
+The handler block is expected to return a boolean for if it has handled the route or not. If the block returns `NO`, JLRoutes will behave as if that route is not a match and it will continue looking for a match. A route is considered to be a match if the pattern string matches **and** the block returns `YES`.
 
 It is also important to note that if you pass nil for the handler block, an internal handler block will be created that simply returns `YES`.
+
+### Global Configuration ###
+
+There are multiple global configuration options available to help customize JLRoutes behavior for a particular use-case. All options only take affect for the next operation.
+
+```objc
+/// Configures verbose logging. Defaults to NO.
++ (void)setVerboseLoggingEnabled:(BOOL)loggingEnabled;
+
+/// Configures if '+' should be replaced with spaces in parsed values. Defaults to YES.
++ (void)setShouldDecodePlusSymbols:(BOOL)shouldDecode;
+
+/// Configures if URL host is always considered to be a path component. Defaults to NO.
++ (void)setAlwaysTreatsHostAsPathComponent:(BOOL)treatsHostAsPathComponent;
+
+/// Configures the default class to use when creating route definitions. Defaults to JLRRouteDefinition.
++ (void)setDefaultRouteDefinitionClass:(Class)routeDefinitionClass;
+```
+
+These are all configured at the `JLRoutes` class level:
+```objc
+[JLRoutes setAlwaysTreatsHostAsPathComponent:YES];
+```
 
 ### More Complex Example ###
 
@@ -98,7 +118,7 @@ This route would match things like `/user/view/joeldev` or `/post/edit/123`. Let
 
 ```objc
 NSURL *editPost = [NSURL URLWithString:@"myapp://post/edit/123?debug=true&foo=bar"];
-[[UIApplication sharedApplication] openURL:editPost];
+[JLRoutes routeURL:editPost];
 ```
 
 The parameters dictionary that the handler block receives would contain the following key/value pairs:
@@ -152,10 +172,10 @@ and then try to route the URL `thing://global`, it would not match because that 
 [JLRoutes routesForScheme:@"thing"].shouldFallbackToGlobalRoutes = YES;
 ```
 
-This tells JLRoutes that if a URL cannot be routed within the `thing` scheme (aka, it starts with `thing:` but no appropriate route can be found), try to recover by looking for a matching route in the global routes scheme as well. After setting that property to `YES`, the URL `thing://global` would be routed to the /global block.
+This tells JLRoutes that if a URL cannot be routed within the `thing` scheme (aka, it starts with `thing:` but no appropriate route can be found), try to recover by looking for a matching route in the global routes scheme as well. After setting that property to `YES`, the URL `thing://global` would be routed to the `/global` handler block.
 
 
-### Wildcard routes ###
+### Wildcards ###
 
 JLRoutes supports setting up routes that will match an arbitrary number of path components at the end of the routed URL. An array containing the additional path components will be added to the parameters dictionary with the key `JLRouteWildcardComponentsKey`.
 
@@ -164,12 +184,12 @@ For example, the following route would be triggered for any URL that started wit
 ```objc
 [[JLRoutes globalRoutes] addRoute:@"/wildcard/*" handler:^BOOL(NSDictionary *parameters) {
   NSArray *pathComponents = parameters[JLRouteWildcardComponentsKey];
-  if ([pathComponents count] > 0 && [pathComponents[0] isEqualToString:@"joker"]) {
+  if (pathComponents.count > 0 && [pathComponents[0] isEqualToString:@"joker"]) {
     // the route matched; do stuff
     return YES;
   }
 
-  // not interested unless the joker's in it
+  // not interested unless 'joker' is in it
   return NO;
 }];
 ```
@@ -195,9 +215,109 @@ There are multiple ways to query routes for programmatic uses (such as powering 
 - (NSArray <JLRRouteDefinition *> *)routes;
 ```
 
+### Handler Block Helper ###
+
+`JLRRouteHandler` is a helper class for creating handler blocks intended to be passed to an addRoute: call.
+
+This is specifically useful for cases in which you want a separate object or class to be the handler for a deeplink route. An example might be a view controller that you want to instantiate and present in response to a deeplink being opened.
+
+In order to take advantage of this helper, your target class must conform to the `JLRRouteHandlerTarget` protocol. For example:
+
+```objc
+@interface MyTargetViewController : UIViewController <JLRRouteHandlerTarget>
+
+@property (nonatomic, copy) NSDictionary <NSString *, id> *parameters;
+
+@end
+
+
+@implementation MyTargetViewController
+
+- (instancetype)initWithRouteParameters:(NSDictionary <NSString *, id> *)parameters
+{
+  self = [super init];
+
+  _parameters = [parameters copy]; // hold on to do something with later on
+
+  return self;
+}
+
+- (void)viewDidLoad
+{
+  [super viewDidLoad];
+  // do something interesting with self.parameters, initialize views, etc...
+}
+
+@end
+```
+
+To hook this up via `JLRRouteHandler`, you could do something like this:
+
+```objc
+id handlerBlock = [JLRRouteHandler handlerBlockForTargetClass:[MyTargetViewController class] completion:^BOOL (MyTargetViewController *viewController) {
+  // Push the created view controller onto the nav controller
+  [self.navigationController pushViewController:viewController animated:YES];
+  return YES;
+}];
+
+[[JLRoutes globalRoutes] addRoute:@"/some/route" handler:handlerBlock];
+```
+
+There's also a `JLRRouteHandler` convenience method for easily routing to an existing instance of an object vs creating a new instance. For example:
+
+```objc
+MyTargetViewController *rootController = ...; // some object that exists and conforms to JLRRouteHandlerTarget.
+id handlerBlock = [JLRRouteHandler handlerBlockForWeakTarget:rootController];
+
+[[JLRoutes globalRoutes] addRoute:@"/some/route" handler:handlerBlock];
+```
+
+When the route is matched, it will call a method on the target object:
+
+```objc
+- (BOOL)handleRouteWithParameters:(NSDictionary<NSString *, id> *)parameters;
+```
+
+These two mechanisms (weak target and class target) provide a few other ways to organize deep link handlers without writing boilerplate code for each handler or otherwise having to solve that for each app that integrates JLRoutes.
+
 ### Custom Route Parsing ###
 
 It is possible to control how routes are parsed by subclassing `JLRRouteDefinition` and using the `addRoute:` method to add instances of your custom subclass.
+
+```objc
+// Custom route defintion that always matches
+@interface AlwaysMatchRouteDefinition : JLRRouteDefinition
+@end
+
+
+@implementation AlwaysMatchRouteDefinition
+
+- (JLRRouteResponse *)routeResponseForRequest:(JLRRouteRequest *)request
+{
+  // This method is called when JLRoutes is trying to determine if we are a match for the given request object.
+
+  // Create the parameters dictionary
+  NSDictionary *variables = [self routeVariablesForRequest:request];
+  NSDictionary *matchParams = [self matchParametersForRequest:request routeVariables:variables];
+
+  // Return a valid match!
+  return [JLRRouteResponse validMatchResponseWithParameters:matchParams];
+}
+
+@end
+```
+
+This route can now be created an added:
+```objc
+id handlerBlock = ... // assume exists
+AlwaysMatchRouteDefinition *alwaysMatch = [[AlwaysMatchRouteDefinition alloc] initWithPattern:@"/foo" priority:0 handlerBlock:handlerBlock];
+[[JLRoutes globalRoutes] addRoute:alwaysMatch];
+```
+
+Alternatively, if you've written a custom route definition and want JLRoutes to always use it when adding a route (using one of the `addRoute:` methods that takes in raw parameters), use `+setDefaultRouteDefinitionClass:` to configure it as the routing definition class:
+```objc
+[JLRoutes setDefaultRouteDefinitionClass:[MyCustomRouteDefinition class]];
+```
 
 ### License ###
 BSD 3-clause. See the [LICENSE](LICENSE) file for details.

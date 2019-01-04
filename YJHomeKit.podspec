@@ -4,13 +4,14 @@ Pod::Spec.new do |s|
   s.name         = "YJHomeKit"
   s.version      = "0.0.3"
   s.summary      = "YJHomeKit 自己用的"
-
-  s.description  = <<-DESC
-                    用CocoaPods做iOS程序的依赖管理，测试
-                   DESC
+  s.description  = "用CocoaPods做iOS程序的依赖管理，测试"
+  
+  #s.description  = <<-DESC
+  #用CocoaPods做iOS程序的依赖管理，测试
+  #DESC
 
   s.homepage     = "https://github.com/qq756585379/YJHomeKit"
-  # s.screenshots  = "www.example.com/screenshots_1.gif", "www.example.com/screenshots_2.gif"
+  s.screenshots  = "http://media.yangjunv5.top/wexin_receive.jpg", "http://media.yangjunv5.top/wexin_receive2.png"
 
   # s.license      = "MIT (example)"
   s.license      = { :type => "MIT", :file => "LICENSE" }

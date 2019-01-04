@@ -31,6 +31,17 @@ target 'Example' do
     pod 'YTKNetwork'
     
     # 打印 SDK
-#    pod 'CocoaLumberjack'
+    #pod 'CocoaLumberjack'
+    
 
+    pod 'React', :path => '../ReactNative/node_modules/react-native', :subspecs => [
+    'Core',
+    'DevSupport', # 如果RN版本 >= 0.43，则需要加入此行才能开启开发者菜单
+    'RCTText',
+    'RCTNetwork',
+    'RCTWebSocket', # 调试功能需要此模块
+    'RCTAnimation', # FlatList和原生动画功能需要此模块
+    ]
+    pod 'yoga', :path => '../ReactNative/node_modules/react-native/ReactCommon/yoga'
+    
 end

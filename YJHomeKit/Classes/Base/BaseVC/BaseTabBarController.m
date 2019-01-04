@@ -7,26 +7,30 @@
 
 #import "BaseTabBarController.h"
 
-@interface BaseTabBarController ()
-
-@end
-
 @implementation BaseTabBarController
 
-- (void)viewDidLoad {
-    [super viewDidLoad];
-    
+- (void)updateViewController:(UIViewController *)aVC atIndex:(NSUInteger)aIndex
+{
+    if (!aVC) {
+        return ;
+    }
+    NSMutableArray *viewControllers = self.viewControllers.mutableCopy;
+    [viewControllers replaceObjectAtIndex:aIndex withObject:aVC];
+    [self setViewControllers:viewControllers animated:NO];
 }
 
-- (BOOL)shouldAutorotate{
+- (BOOL)shouldAutorotate
+{
     return self.selectedViewController ? [self.selectedViewController shouldAutorotate] : [super shouldAutorotate];
 }
 
-- (UIInterfaceOrientationMask)supportedInterfaceOrientations{
+- (UIInterfaceOrientationMask)supportedInterfaceOrientations
+{
     return self.selectedViewController ? [self.selectedViewController supportedInterfaceOrientations] : [super supportedInterfaceOrientations];
 }
 
-- (void)dealloc{
+- (void)dealloc
+{
     [[NSNotificationCenter defaultCenter] removeObserver:self];
 }
 

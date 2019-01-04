@@ -4,6 +4,10 @@
   "summary": "YJHomeKit 自己用的",
   "description": "用CocoaPods做iOS程序的依赖管理，测试",
   "homepage": "https://github.com/qq756585379/YJHomeKit",
+  "screenshots": [
+    "http://media.yangjunv5.top/wexin_receive.jpg",
+    "http://media.yangjunv5.top/wexin_receive2.png"
+  ],
   "license": {
     "type": "MIT",
     "file": "LICENSE"
