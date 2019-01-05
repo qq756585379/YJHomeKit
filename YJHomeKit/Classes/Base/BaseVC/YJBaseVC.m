@@ -18,4 +18,11 @@
     self.view.backgroundColor = [UIColor whiteColor];
 }
 
+-(void)cancelFirstResponse
+{
+    [self.view endEditing:YES];
+    [self resignFirstResponder];
+    [self.view resignFirstResponder];
+}
+
 @end

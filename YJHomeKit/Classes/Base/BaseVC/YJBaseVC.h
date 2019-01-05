@@ -67,6 +67,8 @@ typedef NS_ENUM(NSInteger, YJSttusBarStyle) {
  */
 @property (nonatomic, assign) BOOL showGlobalMessageTip;
 
+-(void)cancelFirstResponse;
+
 @end
 
 NS_ASSUME_NONNULL_END
