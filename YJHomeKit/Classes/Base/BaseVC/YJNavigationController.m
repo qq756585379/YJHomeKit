@@ -5,15 +5,15 @@
 //  Created by 杨俊 on 2019/1/4.
 //
 
-#import "YJBaseNC.h"
-#import "YJBaseVC.h"
+#import "YJNavigationController.h"
+#import "YJViewController.h"
 
-@interface YJBaseNC () <UINavigationControllerDelegate, UIGestureRecognizerDelegate>
+@interface YJNavigationController () <UINavigationControllerDelegate, UIGestureRecognizerDelegate>
 @property (nonatomic, getter=isAppearingVC) BOOL appearingVC;
 @property (nonatomic, strong) UIPercentDrivenInteractiveTransition *interactivePopTransition;
 @end
 
-@implementation YJBaseNC
+@implementation YJNavigationController
 
 - (void)viewDidLoad {
     [super viewDidLoad];
@@ -78,8 +78,8 @@
 #pragma mark - UIGestureRecognizerDelegate
 - (BOOL)gestureRecognizerShouldBegin:(UIGestureRecognizer *)gestureRecognizer
 {
-    if ([self.topViewController isKindOfClass:[YJBaseVC class]]) {
-        YJBaseVC *vc = (id)self.topViewController;
+    if ([self.topViewController isKindOfClass:[YJViewController class]]) {
+        YJViewController *vc = (id)self.topViewController;
         if (vc.canDragBack) {
             return YES;
         }

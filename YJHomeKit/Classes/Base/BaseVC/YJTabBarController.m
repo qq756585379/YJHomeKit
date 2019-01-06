@@ -5,9 +5,9 @@
 //  Created by 杨俊 on 2018/2/27.
 //
 
-#import "YJBaseTBC.h"
+#import "YJTabBarController.h"
 
-@implementation YJBaseTBC
+@implementation YJTabBarController
 
 - (void)viewDidLoad {
     [super viewDidLoad];

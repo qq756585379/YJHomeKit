@@ -8,16 +8,22 @@
 
 #import <Foundation/Foundation.h>
 
-typedef NS_ENUM(NSUInteger, IMIMappingClassCreateType){
-    IMIMappingClassCreateByCode       = 0,//编码方式创建
-    IMIMappingClassCreateByXib        = 1,//xib方式创建
-    IMIMappingClassCreateByStoryboard = 2,//storyboard方式创建
+typedef NS_ENUM(NSInteger, YJRouteType) {
+    YJRouteTypePush      = 0,   // push界面
+    YJRouteTypePresent   = 1,   // 弹出界面
+    YJRouteTypeFunction  = 2,   // 调用方法
 };
 
-typedef NS_ENUM(NSUInteger, IMIMappingClassPlatformType){
-    IMIMappingClassPlatformTypePhone     = 0,//只在iPhone上load
-    IMIMappingClassPlatformTypePad       = 1,//只在iPad上load
-    IMIMappingClassPlatformTypeUniversal = 2,//任何平台都load
+typedef NS_ENUM(NSUInteger, YJMappingClassCreateType){
+    YJMappingClassCreateByCode       = 0,//编码方式创建
+    YJMappingClassCreateByXib        = 1,//xib方式创建
+    YJMappingClassCreateByStoryboard = 2,//storyboard方式创建
+};
+
+typedef NS_ENUM(NSUInteger, YJMappingClassPlatformType){
+    YJMappingClassPlatformTypePhone     = 0,//只在iPhone上load
+    YJMappingClassPlatformTypePad       = 1,//只在iPad上load
+    YJMappingClassPlatformTypeUniversal = 2,//任何平台都load
 };
 
 @interface YJMappingVO : NSObject
@@ -27,15 +33,17 @@ typedef NS_ENUM(NSUInteger, IMIMappingClassPlatformType){
  */
 @property (nonatomic, strong) NSString *className;
 
+@property (nonatomic) YJRouteType routeType;
+
 /**
  *  创建的方式
  */
-@property (nonatomic) IMIMappingClassCreateType createdType;
+@property (nonatomic) YJMappingClassCreateType createdType;
 
 /**
  *  load过滤
  */
-@property (nonatomic) IMIMappingClassPlatformType loadFilterType;
+@property (nonatomic) YJMappingClassPlatformType loadFilterType;
 
 /**
  *  资源文件存放的bundle名称

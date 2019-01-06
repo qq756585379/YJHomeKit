@@ -62,6 +62,7 @@
 #endif
 
 
+typedef void(^YJCompletionBlock)(id aResponseObject, NSError *anError);
 
 
 

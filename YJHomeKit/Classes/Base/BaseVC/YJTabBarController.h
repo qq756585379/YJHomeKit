@@ -7,7 +7,7 @@
 
 #import <UIKit/UIKit.h>
 
-@interface YJBaseTBC : UITabBarController <UITabBarControllerDelegate>
+@interface YJTabBarController : UITabBarController <UITabBarControllerDelegate>
 
 /**
  *  更新某个index的tab

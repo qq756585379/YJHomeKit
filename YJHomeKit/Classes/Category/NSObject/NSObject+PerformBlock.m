@@ -57,14 +57,16 @@
     });
 }
 
--(void)yj_performSelector:(SEL)aSelector withObject:(id)object{
+-(void)yj_performSelector:(SEL)aSelector withObject:(id)object
+{
 #pragma clang diagnostic push
 #pragma clang diagnostic ignored "-Warc-performSelector-leaks"
     [self performSelector:aSelector withObject:object];
 #pragma clang diagnostic pop
 }
 
--(void)yj_performSelectorName:(NSString *)aSelector withObject:(id)object{
+-(void)yj_performSelectorName:(NSString *)aSelector withObject:(id)object
+{
     [self yj_performSelector:NSSelectorFromString(aSelector) withObject:object];
 }
 

@@ -23,6 +23,9 @@
     UIButton *btn = [UIButton buttonWithType:UIButtonTypeCustom];
     [btn setImage:image forState:UIControlStateNormal];
     [btn setImage:highImage forState:UIControlStateHighlighted];
+    btn.contentHorizontalAlignment = UIControlContentHorizontalAlignmentCenter;
+    //button.size = button.currentBackgroundImage.size;
+    //button.contentEdgeInsets = UIEdgeInsetsMake(0, 15, 0, 0);
     [btn sizeToFit];
     [btn addTarget:target action:action forControlEvents:UIControlEventTouchUpInside];
     UIView *containView = [[UIView alloc] initWithFrame:btn.bounds];
@@ -53,6 +56,21 @@
     backButton.contentEdgeInsets = UIEdgeInsetsMake(0, -20, 0, -20);
     [backButton addTarget:target action:action forControlEvents:UIControlEventTouchUpInside];
     return  [[UIBarButtonItem alloc] initWithCustomView:backButton];
+}
+
++ (UIBarButtonItem *)itemWithTitle:(NSString *)title textColor:(UIColor *)color textFont:(UIFont *)font target:(id)target action:(SEL)action
+{
+    UIButton *button = [UIButton buttonWithType:UIButtonTypeCustom];
+    [button setTitle:title forState:UIControlStateNormal];
+    button.contentHorizontalAlignment = UIControlContentHorizontalAlignmentCenter;
+    [button setTitleColor:color forState:UIControlStateNormal];
+    [button sizeToFit];
+    if (font) {
+        [button.titleLabel setFont:font];
+    }
+    [button addTarget:target action:action forControlEvents:UIControlEventTouchUpInside];
+    button.contentEdgeInsets = UIEdgeInsetsMake(0, 0, 0, 0);
+    return [[self alloc] initWithCustomView:button];
 }
 
 @end

@@ -7,14 +7,12 @@
 
 #import <UIKit/UIKit.h>
 
-NS_ASSUME_NONNULL_BEGIN
-
 typedef NS_ENUM(NSInteger, YJSttusBarStyle) {
     YJStatusBarStyleBlackFont,
     YJStatusBarStyleWhiteFont
 };
 
-@interface YJBaseVC : UIViewController
+@interface YJViewController : UIViewController
 
 /**
  *  是否能右滑返回
@@ -67,8 +65,18 @@ typedef NS_ENUM(NSInteger, YJSttusBarStyle) {
  */
 @property (nonatomic, assign) BOOL showGlobalMessageTip;
 
--(void)cancelFirstResponse;
+//当vc的view加载完成之后，将要显示的时候，调用传入的block刷新数据
+- (void)updateModelWhenViewLoaded:(dispatch_block_t)aBlock;
+- (void)updateModelWhenViewLoaded:(dispatch_block_t)aBlock andIdentifier:(NSString *)identifier;
+//当vc的view加载完成之后，将要显示的时候，调用传入的block刷新数据，只调用一次
+- (void)updateModelWhenViewLoadedOnce:(dispatch_block_t)aBlock;
+- (void)updateModelWhenViewLoadedOnce:(dispatch_block_t)aBlock andIdentifier:(NSString *)identifier;
+//当vc完全呈现之后调用传入的block
+- (void)updateViewWhenViewdidAppear:(dispatch_block_t)aBlock;
+- (void)updateViewWhenViewdidAppear:(dispatch_block_t)aBlock andIdentifier:(NSString *)identifier;
+//当vc完全呈现之后调用传入的block，只调用一次
+- (void)updateViewWhenViewdidAppearOnce:(dispatch_block_t)aBlock;
+- (void)updateViewWhenViewdidAppearOnce:(dispatch_block_t)aBlock andIdentifier:(NSString *)identifier;
+- (void)cancelFirstResponse;
 
 @end
-
-NS_ASSUME_NONNULL_END

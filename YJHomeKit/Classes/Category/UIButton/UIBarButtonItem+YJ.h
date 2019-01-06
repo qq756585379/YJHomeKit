@@ -17,4 +17,6 @@
 
 + (UIBarButtonItem *)backItemWithImage:(UIImage *)image highImage:(UIImage *)highImage target:(id)target action:(SEL)action title:(NSString *)title;
 
++ (UIBarButtonItem *)itemWithTitle:(NSString *)title textColor:(UIColor *)color textFont:(UIFont *)font target:(id)target action:(SEL)action;
+
 @end

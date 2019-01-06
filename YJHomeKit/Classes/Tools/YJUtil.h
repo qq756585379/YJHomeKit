@@ -9,5 +9,6 @@
 
 @interface YJUtil : NSObject
 
++ (NSString *)getWiFiName;
 
 @end

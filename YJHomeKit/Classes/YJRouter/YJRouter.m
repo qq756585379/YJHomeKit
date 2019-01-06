@@ -79,9 +79,9 @@
 
 - (void)registerRouterVO:(YJMappingVO *)aVO withKey:(NSString *)aKeyName
 {
-    if (UI_USER_INTERFACE_IDIOM() == UIUserInterfaceIdiomPhone && aVO.loadFilterType == IMIMappingClassPlatformTypePad) {
+    if (UI_USER_INTERFACE_IDIOM() == UIUserInterfaceIdiomPhone && aVO.loadFilterType == YJMappingClassPlatformTypePad) {
         return;
-    } else if (UI_USER_INTERFACE_IDIOM() == UIUserInterfaceIdiomPad && aVO.loadFilterType == IMIMappingClassPlatformTypePhone) {
+    } else if (UI_USER_INTERFACE_IDIOM() == UIUserInterfaceIdiomPad && aVO.loadFilterType == YJMappingClassPlatformTypePhone) {
         return;
     }
     if (self.mapping[aKeyName]) {
@@ -91,45 +91,33 @@
 }
 
 #pragma mark - Router
-- (id)routerByData:(YJRouterData *)routeData from:(UIViewController *)fromvc extraData:(NSDictionary *)extraData
++ (id)routeToDestVc:(NSString *)destVc from:(UIViewController *)fromVc extraData:(NSDictionary *)extraData
 {
-    //根据scheme处理
-    if (routeData.routeType == YJRouteTypePush || routeData.routeType == YJRouteTypePresent) {
-        return [self __routeVCWithData:routeData from:fromvc extraData:extraData];
-    } else if (routeData.routeType == YJRouteTypeFunction){
-        return nil;
-    }
-    
-    return nil;
-}
-
-- (id)__routeVCWithData:(YJRouterData *)routeData from:(UIViewController *)fromvc extraData:(NSDictionary *)extraData
-{
-    YJMappingVO *mappingVO = [self.mapping objectForKey:routeData.destVc];
+    YJRouter *router = [YJRouter sharedInstance];
+    YJMappingVO *mappingVO = [router.mapping objectForKey:destVc];
     if (mappingVO == nil) {
         return nil;
     }
+    
     UIViewController *vc = [UIViewController createWithMappingVO:mappingVO extraData:extraData];
     if (!vc) {
         NSLog(@"router error, can not new one");
         return nil;
     }
     
-    if (routeData.routeType == YJRouteTypePush) {
+    if (mappingVO.routeType == YJRouteTypePush) {
         if ([vc isKindOfClass:[UINavigationController class]]) {
             NSLog(@"cannot push a nc");
             return nil;
         }
-        //Push VC
         vc.hidesBottomBarWhenPushed = YES;
-        [fromvc.navigationController pushViewController:vc animated:YES];
-        NSLog(@"fromvc.navigationController = %@",fromvc.navigationController);
-    } else if (routeData.routeType == YJRouteTypePresent){
-        [fromvc presentViewController:vc animated:YES completion:^{
+        [fromVc.navigationController pushViewController:vc animated:YES];
+    } else if (mappingVO.routeType == YJRouteTypePresent){
+        [fromVc presentViewController:vc animated:YES completion:^{
             
         }];
     }
-
+    
     return vc;
 }
 

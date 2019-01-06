@@ -21,6 +21,6 @@
 // 获取view当前所在controller
 - (UIViewController *)yj_currentController;
 
-- (id)yj_routerByData:(YJRouterData *)routeData extraData:(NSDictionary *)extraData;
+//- (id)yj_routerByData:(YJRouterData *)routeData extraData:(NSDictionary *)extraData;
 
 @end

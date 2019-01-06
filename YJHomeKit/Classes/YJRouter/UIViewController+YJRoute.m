@@ -26,18 +26,19 @@
     }
     
     UIViewController *vc = nil;
-    if (aMappingVO.createdType == IMIMappingClassCreateByCode) {
+    if (aMappingVO.createdType == YJMappingClassCreateByCode) {
         vc = [[class alloc] initWithNibName:nil bundle:nil];
     }
-    else if (aMappingVO.createdType == IMIMappingClassCreateByXib) {
+    else if (aMappingVO.createdType == YJMappingClassCreateByXib) {
         NSBundle *bundle = [self getBundleWithBundleName:aMappingVO.bundleName];
         vc = [[class alloc] initWithNibName:aMappingVO.nibName bundle:bundle];
     }
-    else if (aMappingVO.createdType == IMIMappingClassCreateByStoryboard) {
+    else if (aMappingVO.createdType == YJMappingClassCreateByStoryboard) {
         NSBundle *bundle = [self getBundleWithBundleName:aMappingVO.bundleName];
         UIStoryboard *storyboard = [UIStoryboard storyboardWithName:aMappingVO.storyboardName bundle:bundle];
         vc = [storyboard instantiateViewControllerWithIdentifier:aMappingVO.storyboardID];
     }
+    
     // kvc设置参数
     if (aParam && vc) {
         [aParam enumerateKeysAndObjectsUsingBlock:^(id  _Nonnull key, id  _Nonnull obj, BOOL * _Nonnull stop) {
@@ -48,16 +49,17 @@
             } @finally {}
         }];
     }
+    
     return vc;
 }
 
 + (NSBundle *)getBundleWithBundleName:(NSString *)aBundleName
 {
-    NSBundle *bundle = [NSBundle mainBundle];
     if (aBundleName.length) {
-        bundle = [NSBundle bundleWithURL:[[NSBundle mainBundle] URLForResource:aBundleName withExtension:@"bundle"]];
+        return [NSBundle bundleWithURL:[[NSBundle mainBundle] URLForResource:aBundleName withExtension:@"bundle"]];
     }
-    return bundle;
+    
+    return [NSBundle mainBundle];
 }
 
 // 获取view当前所在controller
@@ -86,9 +88,9 @@
     return result;
 }
 
-- (id)yj_routerByData:(YJRouterData *)routeData extraData:(NSDictionary *)extraData
-{
-    return [[YJRouter sharedInstance] routerByData:routeData from:self extraData:extraData];
-}
+//- (id)yj_routerByData:(YJRouterData *)routeData extraData:(NSDictionary *)extraData
+//{
+//    return [[YJRouter sharedInstance] routerByData:routeData from:self extraData:extraData];
+//}
 
 @end

@@ -9,4 +9,20 @@
 
 @interface NSString (tool)
 
+-(NSString *)yj_stringByAddingPercentEscapesUsingEncoding;
+-(NSString *)yj_stringByReplacingPercentEscapesUsingEncoding;
+
+-(CGSize)sizeWithFont:(UIFont *)font maxW:(CGFloat)maxW;
+
+-(BOOL)isPhoneNo;
+-(BOOL)isEmail;
+
+-(NSString *)stringFromDate:(NSDate *)dat format:(NSString *)format;
+
+//获取首字母
+- (NSString *)firstStringSeparatedByString:(NSString *)separeted;
+
++(NSString *) unicodeToUtf8:(NSString *)string;
++(NSString *) utf8ToUnicode:(NSString *)string;
+
 @end

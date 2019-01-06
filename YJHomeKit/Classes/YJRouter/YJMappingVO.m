@@ -10,11 +10,36 @@
 
 @implementation YJMappingVO
 
-- (NSString *)nibName{
+- (NSString *)nibName
+{
     if (!_nibName) {
         return self.className;
     }
     return _nibName;
+}
+
+- (NSString *)storyboardID
+{
+    if (!_storyboardID) {
+        return self.className;
+    }
+    return _storyboardID;
+}
+
+- (NSString *)storyboardName
+{
+    if (!_storyboardName) {
+        return @"Main";
+    }
+    return _storyboardName;
+}
+
+- (YJRouteType)routeType
+{
+    if (!_routeType) {
+        return YJRouteTypePush;
+    }
+    return _routeType;
 }
 
 @end

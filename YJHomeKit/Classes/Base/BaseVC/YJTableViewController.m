@@ -5,14 +5,14 @@
 //  Created by 杨俊 on 2019/1/5.
 //
 
-#import "YJBaseTableVC.h"
+#import "YJTableViewController.h"
 #import "YJMacro.h"
 
-@interface YJBaseTableVC ()
+@interface YJTableViewController ()
 @property (nonatomic, strong) YJTableView *tableView;
 @end
 
-@implementation YJBaseTableVC
+@implementation YJTableViewController
 
 - (void)loadView
 {

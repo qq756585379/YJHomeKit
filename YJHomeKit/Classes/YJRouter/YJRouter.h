@@ -8,7 +8,6 @@
 
 #import <UIKit/UIKit.h>
 #import <Foundation/Foundation.h>
-#import "YJRouterData.h"
 #import "YJMappingVO.h"
 
 @interface YJRouter : NSObject
@@ -35,7 +34,7 @@
 - (void)registerRouterVO:(YJMappingVO *)aVO withKey:(NSString *)aKeyName;
 
 #pragma mark - Router
-- (id)routerByData:(YJRouterData *)routeData from:(UIViewController *)fromvc extraData:(NSDictionary *)extraData;
++ (id)routeToDestVc:(NSString *)destVc from:(UIViewController *)fromVc extraData:(NSDictionary *)extraData;
 
 @end
 
