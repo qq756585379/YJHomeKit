@@ -18,7 +18,10 @@ typedef NS_ENUM(NSInteger ,YJRegionType){
 @interface YJGlobalValue : NSObject
 
 + (instancetype)sharedInstance;
-
+    
+@property (nonatomic, assign, readonly) UIEdgeInsets safeAreaInset;
+@property (nonatomic, assign, readonly) BOOL isHairHead;//是否为刘海屏幕
+    
 @property (nonatomic,   copy) NSString *signatureKey;//解密后的签名密钥
 @property (nonatomic, assign) NSTimeInterval dTime;//服务器时间-客户端时间
 @property (nonatomic, copy) NSDate         *serverTime;//根据差值算出的服务器时间

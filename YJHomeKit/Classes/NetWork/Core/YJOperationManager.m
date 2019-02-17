@@ -27,11 +27,12 @@
     operationManager.responseSerializer = [AFJSONResponseSerializer serializer];//设置json解析
     operationManager.requestSerializer.timeoutInterval = 5;
 
-    NSSet *set = [NSSet setWithObjects:@"text/html", @"application/json", @"application/javascript", @"text/plain", @"text/json", @"application/x-javascript", nil];
+    NSSet *set = [NSSet setWithObjects:@"text/html", @"application/json", @"application/javascript", @"text/plain",
+                  @"text/json", @"application/x-javascript", nil];
     operationManager.responseSerializer.acceptableContentTypes = set;
     operationManager.hostClassName = NSStringFromClass([owner class]);
     //缓存策略
-    operationManager.requestSerializer.cachePolicy = NSURLRequestReturnCacheDataElseLoad;
+//    operationManager.requestSerializer.cachePolicy = NSURLRequestReturnCacheDataElseLoad;
     
     //session无效
     __weak YJOperationManager *weakManager = operationManager;
@@ -213,10 +214,12 @@
     
     //Content-Type
     if (aParam.requestType == kRequestPost) {
-//        [self.requestSerializer setValue:@"application/x-www-form-urlencoded;charset=utf-8" forHTTPHeaderField:@"Content-Type"];
+        [self.requestSerializer setValue:@"application/x-www-form-urlencoded;charset=utf-8" forHTTPHeaderField:@"Content-Type"];
     } else {
         [self.requestSerializer setValue:nil forHTTPHeaderField:@"Content-Type"];
     }
+    
+    [self.requestSerializer setValue:@"{\"userToken\":\"d04e89dd-2565-4249-b7ea-f0d619cc8d5f\"}" forHTTPHeaderField:@"header"];
 }
 
 #pragma mark - 打印Request & Response

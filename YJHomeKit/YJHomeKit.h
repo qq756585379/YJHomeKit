@@ -48,6 +48,7 @@
 #import <YJHomeKit/YJNetworkFactory.h>
 #import <YJHomeKit/YJNetworkError.h>
 #import <YJHomeKit/UIViewController+loading.h>
+#import <YJHomeKit/YJGlobalValue.h>
 
 
 
