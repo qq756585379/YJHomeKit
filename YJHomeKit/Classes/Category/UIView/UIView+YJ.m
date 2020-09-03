@@ -9,6 +9,12 @@
 
 @implementation UIView (YJ)
 
+- (void)yj_updateConstraints
+{
+    [self updateConstraintsIfNeeded];//强制更新约束
+    [self layoutIfNeeded];//强制刷新界面
+}
+
 - (BOOL)isShowingOnKeyWindow
 {
     UIWindow *keyWindow = [UIApplication sharedApplication].keyWindow;

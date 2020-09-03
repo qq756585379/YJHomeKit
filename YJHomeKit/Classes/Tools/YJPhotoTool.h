@@ -10,6 +10,12 @@
 
 @interface YJPhotoTool : NSObject
 
++ (void)getPHAuthorization:(void(^)(BOOL auth))completion;
+
++ (BOOL)canAccessPhotoAlbum;
+
++ (NSMutableArray<PHAsset *>*)fetchAssetCollection;
+
 // 创建一个相册 (同步)
 + (PHAssetCollection *)sync_createNewAlbumCalled:(NSString *)albumName;
 
@@ -75,7 +81,20 @@
  */
 + (PHAsset *)fetchAssetFrom:(NSString *)assetId;
 
-+ (void)fetchVideoUrlAndAVAssetFrom:(NSString *)assetId
-                         completion:(void (^)(AVAsset *avasset, NSURL *url))completion;
++ (NSString *)fetchFileNameFrom:(PHAsset *)asset;
+
++ (void)fetchVideoUrlAndAVAssetFrom:(NSString *)assetId completion:(void (^)(AVAsset *avasset, NSURL *url))completion;
+
++ (void)fetchUIImageFrom:(PHAsset *)asset completion:(void (^)(UIImage *image))completion;
+
++ (void)fetchUIImageFrom:(PHAsset *)asset
+        withDeliveryMode:(PHImageRequestOptionsDeliveryMode)mode
+              completion:(void (^)(UIImage *image))completion;
+
++ (void)fetchAVPlayerItemFrom:(PHAsset *)asset completion:(void (^)(AVPlayerItem *playerItem))completion;
+
++ (void)fetchAVPlayerItemFrom:(PHAsset *)asset completion:(void (^)(AVPlayerItem *playerItem))completion;
+
++ (void)fetchFileURLFrom:(PHAsset *)asset completion:(void (^)(NSURL *fileURL, AVAsset *avasset))completion;
 
 @end

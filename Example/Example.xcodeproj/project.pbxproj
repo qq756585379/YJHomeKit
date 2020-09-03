@@ -8,12 +8,13 @@
 
 /* Begin PBXBuildFile section */
 		C55A0F06D29BB76D36D8A811 /* Pods_Example.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3A023686F7507F49ADE42CBB /* Pods_Example.framework */; };
+		D44AE928221AA83C00ABF10F /* Mp3Encoder.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D44AE927221AA83C00ABF10F /* Mp3Encoder.cpp */; };
 		F50B68B01FFC773400183AB0 /* YJExample.m in Sources */ = {isa = PBXBuildFile; fileRef = F50B68AF1FFC773400183AB0 /* YJExample.m */; };
 		F50B68B31FFC7A8800183AB0 /* YJPhotoToolVC.m in Sources */ = {isa = PBXBuildFile; fileRef = F50B68B21FFC7A8800183AB0 /* YJPhotoToolVC.m */; };
 		F50B68B71FFC7CEB00183AB0 /* 猫猫.jpg in Resources */ = {isa = PBXBuildFile; fileRef = F50B68B51FFC7CEA00183AB0 /* 猫猫.jpg */; };
 		F50B68B81FFC7CEB00183AB0 /* bug.mov in Resources */ = {isa = PBXBuildFile; fileRef = F50B68B61FFC7CEB00183AB0 /* bug.mov */; };
 		F513717920AAE91B00C5C69B /* XiuXiuViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F513717820AAE91B00C5C69B /* XiuXiuViewController.m */; };
-		F53663F51FEA3197008175CA /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = F53663F41FEA3197008175CA /* AppDelegate.m */; };
+		F53663F51FEA3197008175CA /* AppDelegate.mm in Sources */ = {isa = PBXBuildFile; fileRef = F53663F41FEA3197008175CA /* AppDelegate.mm */; };
 		F53663F81FEA3197008175CA /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F53663F71FEA3197008175CA /* ViewController.m */; };
 		F53663FB1FEA3197008175CA /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F53663F91FEA3197008175CA /* Main.storyboard */; };
 		F53663FD1FEA3197008175CA /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = F53663FC1FEA3197008175CA /* Assets.xcassets */; };
@@ -55,6 +56,8 @@
 /* Begin PBXFileReference section */
 		3A023686F7507F49ADE42CBB /* Pods_Example.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Example.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		8156D883B542D9379ABB215A /* Pods-Example.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Example.release.xcconfig"; path = "Pods/Target Support Files/Pods-Example/Pods-Example.release.xcconfig"; sourceTree = "<group>"; };
+		D44AE926221AA83C00ABF10F /* Mp3Encoder.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Mp3Encoder.h; sourceTree = "<group>"; };
+		D44AE927221AA83C00ABF10F /* Mp3Encoder.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = Mp3Encoder.cpp; sourceTree = "<group>"; };
 		E9A115A25850C81400E79AD8 /* Pods-Example.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Example.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Example/Pods-Example.debug.xcconfig"; sourceTree = "<group>"; };
 		F50B68AE1FFC773400183AB0 /* YJExample.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = YJExample.h; sourceTree = "<group>"; };
 		F50B68AF1FFC773400183AB0 /* YJExample.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = YJExample.m; sourceTree = "<group>"; };
@@ -66,7 +69,7 @@
 		F513717820AAE91B00C5C69B /* XiuXiuViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = XiuXiuViewController.m; sourceTree = "<group>"; };
 		F53663F01FEA3197008175CA /* Example.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Example.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		F53663F31FEA3197008175CA /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
-		F53663F41FEA3197008175CA /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
+		F53663F41FEA3197008175CA /* AppDelegate.mm */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.objcpp; path = AppDelegate.mm; sourceTree = "<group>"; };
 		F53663F61FEA3197008175CA /* ViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ViewController.h; sourceTree = "<group>"; };
 		F53663F71FEA3197008175CA /* ViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ViewController.m; sourceTree = "<group>"; };
 		F53663FA1FEA3197008175CA /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -148,6 +151,15 @@
 			name = Pods;
 			sourceTree = "<group>";
 		};
+		D44AE925221AA82000ABF10F /* Mp3Encoder */ = {
+			isa = PBXGroup;
+			children = (
+				D44AE926221AA83C00ABF10F /* Mp3Encoder.h */,
+				D44AE927221AA83C00ABF10F /* Mp3Encoder.cpp */,
+			);
+			path = Mp3Encoder;
+			sourceTree = "<group>";
+		};
 		F50B68AD1FFC771C00183AB0 /* Model */ = {
 			isa = PBXGroup;
 			children = (
@@ -180,6 +192,7 @@
 		F52C9D4C20BD5AC60021662C /* classes */ = {
 			isa = PBXGroup;
 			children = (
+				D44AE925221AA82000ABF10F /* Mp3Encoder */,
 				F50B68B41FFC7A8F00183AB0 /* YJPhotoTool */,
 				F571FBB31FFF0B60002B7E25 /* Web-Test */,
 				F5F9A3D5200A1466005FBC66 /* SettingVC */,
@@ -218,7 +231,7 @@
 			children = (
 				F52C9D4C20BD5AC60021662C /* classes */,
 				F53663F31FEA3197008175CA /* AppDelegate.h */,
-				F53663F41FEA3197008175CA /* AppDelegate.m */,
+				F53663F41FEA3197008175CA /* AppDelegate.mm */,
 				F53663FC1FEA3197008175CA /* Assets.xcassets */,
 				F53664011FEA3197008175CA /* Info.plist */,
 				F53663FE1FEA3197008175CA /* LaunchScreen.storyboard */,
@@ -444,8 +457,6 @@
 			inputPaths = (
 				"${SRCROOT}/Pods/Target Support Files/Pods-Example/Pods-Example-frameworks.sh",
 				"${BUILT_PRODUCTS_DIR}/AFNetworking/AFNetworking.framework",
-				"${BUILT_PRODUCTS_DIR}/Aspects/Aspects.framework",
-				"${BUILT_PRODUCTS_DIR}/JLRoutes/JLRoutes.framework",
 				"${BUILT_PRODUCTS_DIR}/MBProgressHUD/MBProgressHUD.framework",
 				"${BUILT_PRODUCTS_DIR}/Masonry/Masonry.framework",
 				"${BUILT_PRODUCTS_DIR}/PureLayout/PureLayout.framework",
@@ -457,8 +468,6 @@
 			name = "[CP] Embed Pods Frameworks";
 			outputPaths = (
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/AFNetworking.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Aspects.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/JLRoutes.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/MBProgressHUD.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Masonry.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/PureLayout.framework",
@@ -504,6 +513,7 @@
 				F50B68B01FFC773400183AB0 /* YJExample.m in Sources */,
 				F5AD94C120AF06AD00B284C8 /* YJPlayer.m in Sources */,
 				F5AD948420AECC3600B284C8 /* AVAssetImageGeneratorVC.m in Sources */,
+				D44AE928221AA83C00ABF10F /* Mp3Encoder.cpp in Sources */,
 				F5F9A3D8200A1551005FBC66 /* YJBaseSettingController.m in Sources */,
 				F53664031FEA3197008175CA /* main.m in Sources */,
 				F513717920AAE91B00C5C69B /* XiuXiuViewController.m in Sources */,
@@ -512,7 +522,7 @@
 				F5AD94AA20AEE35E00B284C8 /* RunTimeVC.m in Sources */,
 				F571FC191FFF0BA1002B7E25 /* YJWebViewController.m in Sources */,
 				F5AD947420AEC5DF00B284C8 /* AVAudioRecorderVC.m in Sources */,
-				F53663F51FEA3197008175CA /* AppDelegate.m in Sources */,
+				F53663F51FEA3197008175CA /* AppDelegate.mm in Sources */,
 				F5AD94BD20AF068100B284C8 /* AVPlayerVC.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -589,7 +599,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
 				MTL_ENABLE_DEBUG_INFO = YES;
 				ONLY_ACTIVE_ARCH = YES;
 				SDKROOT = iphoneos;
@@ -640,7 +650,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				SDKROOT = iphoneos;
 				VALIDATE_PRODUCT = YES;
@@ -653,10 +663,10 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = 4S7HJ2TM84;
-				GCC_PREFIX_HEADER = "$SRCROOT/Example/PrefixHeader.pch";
+				DEVELOPMENT_TEAM = UD3BUW76TP;
+				GCC_PREFIX_HEADER = $SRCROOT/Example/PrefixHeader.pch;
 				INFOPLIST_FILE = Example/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.chuangmi.Example;
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -670,10 +680,10 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = 4S7HJ2TM84;
-				GCC_PREFIX_HEADER = "$SRCROOT/Example/PrefixHeader.pch";
+				DEVELOPMENT_TEAM = UD3BUW76TP;
+				GCC_PREFIX_HEADER = $SRCROOT/Example/PrefixHeader.pch;
 				INFOPLIST_FILE = Example/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.chuangmi.Example;
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -691,7 +701,7 @@
 				F53664051FEA3197008175CA /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Release;
+			defaultConfigurationName = Debug;
 		};
 		F53664061FEA3197008175CA /* Build configuration list for PBXNativeTarget "Example" */ = {
 			isa = XCConfigurationList;
@@ -700,7 +710,7 @@
 				F53664081FEA3197008175CA /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Release;
+			defaultConfigurationName = Debug;
 		};
 /* End XCConfigurationList section */
 	};

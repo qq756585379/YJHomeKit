@@ -13,6 +13,8 @@
 
 + (instancetype)viewFromXib;
 
+- (void)yj_updateConstraints;
+
 /** 是否相交 */
 - (BOOL)intersectWithView:(UIView *)view;
 

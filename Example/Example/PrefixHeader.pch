@@ -11,5 +11,6 @@
 
 #import <YJHomeKit/YJHomeKit.h>
 #import <PureLayout/PureLayout.h>
+#import <AFNetworking/AFNetworking.h>
 
 #endif /* PrefixHeader_pch */

@@ -80,5 +80,7 @@ Pod::Spec.new do |s|
   s.dependency "PureLayout"
   s.dependency "ReactiveObjC"
   s.dependency "MBProgressHUD"
-
+  s.dependency "AFNetworking"
+  
+  
 end

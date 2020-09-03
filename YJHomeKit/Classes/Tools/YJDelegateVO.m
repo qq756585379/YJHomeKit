@@ -9,7 +9,7 @@
 
 @implementation YJDelegateVO
 
--(instancetype)initWithSel:(SEL)sel data:(NSDictionary *)data{
+- (instancetype)initWithSel:(SEL)sel data:(NSDictionary *)data {
     if (self = [super init]) {
         self.delmethod = sel;
         self.dataDcit = data;
@@ -18,7 +18,7 @@
     return self;
 }
 
--(instancetype)initWithSelector:(NSString *)selName data:(NSDictionary *)data{
+- (instancetype)initWithSelector:(NSString *)selName data:(NSDictionary *)data {
     if (self = [super init]) {
         self.aSelector = selName;
         self.dataDcit = data;
@@ -27,7 +27,7 @@
     return self;
 }
 
--(instancetype)initWithSel:(SEL)sel subscriber:(id)subscriber{
+- (instancetype)initWithSel:(SEL)sel subscriber:(id)subscriber {
     if (self = [super init]) {
         self.delmethod = sel;
         self.subscriber = subscriber;
@@ -36,8 +36,7 @@
 }
 
 //发布广播
--(void)broadCastTopicWithData:(NSDictionary *)data
-{
+- (void)broadCastTopicWithData:(NSDictionary *)data {
     if ([self.subscriber respondsToSelector:self.delmethod]) {
 #pragma clang diagnostic push
 #pragma clang diagnostic ignored "-Warc-performSelector-leaks"

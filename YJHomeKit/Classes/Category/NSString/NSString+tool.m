@@ -11,7 +11,7 @@
 
 -(NSString *)yj_stringByAddingPercentEscapesUsingEncoding
 {
-    return [self stringByAddingPercentEscapesUsingEncoding: NSUTF8StringEncoding];
+    return [self stringByAddingPercentEncodingWithAllowedCharacters:[NSCharacterSet URLQueryAllowedCharacterSet]];
 }
 
 -(NSString *)yj_stringByReplacingPercentEscapesUsingEncoding
@@ -39,7 +39,9 @@
     NSMutableDictionary *attrs = [NSMutableDictionary dictionary];
     attrs[NSFontAttributeName] = font;
     CGSize maxSize = CGSizeMake(maxW, MAXFLOAT);
-    return [self boundingRectWithSize:maxSize options:NSStringDrawingUsesLineFragmentOrigin attributes:attrs context:nil].size;
+    return [self boundingRectWithSize:maxSize
+                              options:NSStringDrawingUsesLineFragmentOrigin
+                           attributes:attrs context:nil].size;
 }
 
 -(NSString *)stringFromDate:(NSDate *)dat format:(NSString *)format
@@ -90,6 +92,30 @@
         }
     }
     return s;
+}
+
++(NSString *) formatTimeInterval:(CGFloat)seconds
+{
+    seconds = MAX(0, seconds);
+
+    NSInteger s = seconds;
+    NSInteger m = s / 60;
+    NSInteger h = m / 60;
+    
+    s = s % 60;
+    m = m % 60;
+    
+    return [NSString stringWithFormat:@"%0.2ld:%0.2ld:%0.2ld", (long)h,(long)m,(long)s];
+}
+
++(NSString *) formatTimeInterval2:(CGFloat)seconds
+{
+    seconds = MAX(0, seconds);
+    int hour = 0, minute = 0;
+    hour = seconds / 3600;
+    minute = (seconds - hour * 3600) / 60;
+    int second = seconds - hour * 3600 - minute *  60;
+    return [NSString stringWithFormat:@"%02d:%02d:%02d", hour, minute, second];
 }
 
 @end

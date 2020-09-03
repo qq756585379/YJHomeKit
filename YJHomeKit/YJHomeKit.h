@@ -17,6 +17,8 @@
 #import <YJHomeKit/UIView+YJ.h>
 #import <YJHomeKit/YJTableView.h>
 #import <YJHomeKit/YJPhotoTool.h>
+#import <YJHomeKit/YJArchiveData.h>
+#import <YJHomeKit/NSDate+YJ.h>
 #import <YJHomeKit/UIImage+tool.h>
 #import <YJHomeKit/UIColor+Tool.h>
 #import <YJHomeKit/YJUserDefault.h>
@@ -49,6 +51,8 @@
 #import <YJHomeKit/YJNetworkError.h>
 #import <YJHomeKit/UIViewController+loading.h>
 #import <YJHomeKit/YJGlobalValue.h>
+#import <YJHomeKit/YJNilPlaceHoldView.h>
+
 
 
 

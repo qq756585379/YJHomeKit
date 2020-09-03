@@ -35,8 +35,7 @@
                                                                              message:aMessage
                                                                       preferredStyle:UIAlertControllerStyleAlert];
     
-    if (leftBtnName)
-    {
+    if (leftBtnName){
         UIAlertAction *cancelButton = [UIAlertAction actionWithTitle:leftBtnName
                                                                style:UIAlertActionStyleCancel
                                                              handler:^(UIAlertAction *action) {
@@ -45,8 +44,7 @@
         [alertController addAction:cancelButton];
     }
     
-    if (rightBtnName)
-    {
+    if (rightBtnName){
         UIAlertAction *okButton = [UIAlertAction actionWithTitle:rightBtnName
                                                            style:UIAlertActionStyleDefault
                                                          handler:^(UIAlertAction *action) {

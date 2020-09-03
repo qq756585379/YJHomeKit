@@ -24,5 +24,7 @@
 
 +(NSString *) unicodeToUtf8:(NSString *)string;
 +(NSString *) utf8ToUnicode:(NSString *)string;
++(NSString *) formatTimeInterval:(CGFloat)seconds;
++(NSString *) formatTimeInterval2:(CGFloat)seconds;
 
 @end

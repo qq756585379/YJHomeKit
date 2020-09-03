@@ -14,14 +14,13 @@ PODS:
   - AFNetworking/Serialization (3.2.1)
   - AFNetworking/UIKit (3.2.1):
     - AFNetworking/NSURLSession
-  - Aspects (1.4.1)
-  - JLRoutes (2.1)
   - Masonry (1.1.0)
   - MBProgressHUD (1.1.0)
-  - PureLayout (3.0.2)
+  - PureLayout (3.1.4)
   - ReactiveObjC (3.1.0)
   - SVProgressHUD (2.2.5)
   - YJHomeKit (0.0.3):
+    - AFNetworking
     - Masonry
     - MBProgressHUD
     - PureLayout
@@ -30,8 +29,7 @@ PODS:
     - AFNetworking (~> 3.0)
 
 DEPENDENCIES:
-  - Aspects
-  - JLRoutes
+  - AFNetworking
   - Masonry
   - MBProgressHUD
   - PureLayout
@@ -43,8 +41,6 @@ DEPENDENCIES:
 SPEC REPOS:
   https://github.com/cocoapods/specs.git:
     - AFNetworking
-    - Aspects
-    - JLRoutes
     - Masonry
     - MBProgressHUD
     - PureLayout
@@ -58,16 +54,14 @@ EXTERNAL SOURCES:
 
 SPEC CHECKSUMS:
   AFNetworking: b6f891fdfaed196b46c7a83cf209e09697b94057
-  Aspects: 7595ba96a6727a58ebcbfc954497fc5d2fdde546
-  JLRoutes: d755245322b94227662ea3e43492fdca94e05c5b
   Masonry: 678fab65091a9290e40e2832a55e7ab731aad201
   MBProgressHUD: e7baa36a220447d8aeb12769bf0585582f3866d9
-  PureLayout: 4d550abe49a94f24c2808b9b95db9131685fe4cd
+  PureLayout: f08c01b8dec00bb14a1fefa3de4c7d9c265df85e
   ReactiveObjC: 2a38ea15335de4119d8b17caf1db1484f61db902
   SVProgressHUD: 1428aafac632c1f86f62aa4243ec12008d7a51d6
-  YJHomeKit: 23feda6a3804e578c49d1e8e2e964e3ed0ba589d
+  YJHomeKit: f03c1774d67bf083771d6908f1090b7a5bd24b99
   YTKNetwork: df8a7a5597bda1664a4efaa7ef871a818a887fe0
 
-PODFILE CHECKSUM: 527d0247f2669169b92733c87b1f7cc4ff07cfc2
+PODFILE CHECKSUM: 142821171c1e4ecb448ba56367c3b6667d693f55
 
 COCOAPODS: 1.5.3

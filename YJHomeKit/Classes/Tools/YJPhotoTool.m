@@ -9,6 +9,42 @@
 
 @implementation YJPhotoTool
 
++ (void)getPHAuthorization:(void(^)(BOOL auth))completion
+{
+    PHAuthorizationStatus status = [PHPhotoLibrary authorizationStatus];
+    if (status == PHAuthorizationStatusRestricted || status == PHAuthorizationStatusDenied) {
+        if (completion) completion(NO);
+        return;
+    }
+    
+    if (status == PHAuthorizationStatusNotDetermined) {
+        [PHPhotoLibrary requestAuthorization:^(PHAuthorizationStatus status) {
+            if (status == PHAuthorizationStatusAuthorized) {
+                if (completion) completion(YES);
+            } else {
+                if (completion) completion(NO);
+            }
+        }];
+    } else {
+        if (completion) completion(YES);
+    }
+}
+
++ (NSMutableArray<PHAsset *>*)fetchAssetCollection
+{
+    NSMutableArray<PHAsset *>* assets = [NSMutableArray array];
+    PHFetchOptions *allPhotosOptions = [[PHFetchOptions alloc] init];
+    allPhotosOptions.sortDescriptors = @[[NSSortDescriptor sortDescriptorWithKey:@"creationDate" ascending:YES]];
+    PHFetchResult<PHAsset *> *allPhotos = [PHAsset fetchAssetsWithOptions:allPhotosOptions];
+    [allPhotos enumerateObjectsUsingBlock:^(PHAsset * _Nonnull obj, NSUInteger idx, BOOL * _Nonnull stop) {
+        PHAsset *asset = (PHAsset *)obj;
+        if (asset.mediaType == PHAssetMediaTypeVideo) {
+            [assets addObject:asset];
+        }
+    }];
+    return assets;
+}
+
 // 创建一个相册 (异步)
 + (void)async_createAlbum:(NSString *)ablumName
                   success:(void(^)(PHAssetCollection *))completionSuccess
@@ -228,8 +264,7 @@
 /**
  *  获取photos app创建的相册里所有
  */
-+ (void)loadMediasFromAlbum:(NSString *)albumName
-                 completion:(void (^)(PHFetchResult<PHAsset *>*result))completion
++ (void)loadMediasFromAlbum:(NSString *)albumName completion:(void (^)(PHFetchResult<PHAsset *>*result))completion
 {
     PHFetchOptions *option = [[PHFetchOptions alloc] init];
     option.predicate = [NSPredicate predicateWithFormat:@"title = %@", albumName];
@@ -237,11 +272,9 @@
                                                                                subtype:PHAssetCollectionSubtypeAlbumRegular
                                                                                options:option];
     PHAssetCollection *collection = [collectionResult firstObject];
-    
     PHFetchOptions *fetchOptions= [[PHFetchOptions alloc] init];
     fetchOptions.sortDescriptors = @[[NSSortDescriptor sortDescriptorWithKey:@"creationDate" ascending:NO]];
     PHFetchResult<PHAsset *>*result = [PHAsset fetchAssetsInAssetCollection:collection options:fetchOptions];
-    
     if (completion) {
         completion(result);
     }
@@ -303,8 +336,7 @@
     return [PHAsset fetchAssetsWithLocalIdentifiers:@[assetId] options:nil].firstObject;
 }
 
-+ (void)fetchVideoUrlAndAVAssetFrom:(NSString *)assetId
-                         completion:(void (^)(AVAsset *avasset, NSURL *url))completion
++ (void)fetchVideoUrlAndAVAssetFrom:(NSString *)assetId completion:(void (^)(AVAsset *avasset, NSURL *url))completion
 {
     __block NSURL *url = nil;
     [[PHImageManager defaultManager] requestAVAssetForVideo:[PHAsset fetchAssetsWithLocalIdentifiers:@[assetId] options:nil].firstObject options:nil resultHandler:^(AVAsset * _Nullable asset, AVAudioMix * _Nullable audioMix, NSDictionary * _Nullable info) {
@@ -328,6 +360,81 @@
         avasset = asset;
     }];
     return avasset;
+}
+
++ (NSString *)fetchFileNameFrom:(PHAsset *)asset
+{
+    NSArray *resources = [PHAssetResource assetResourcesForAsset:asset];
+    return ((PHAssetResource *)resources[0]).originalFilename;
+}
+
++ (void)fetchUIImageFrom:(PHAsset *)asset completion:(void (^)(UIImage *image))completion
+{
+    PHImageRequestOptions *options = [[PHImageRequestOptions alloc] init];
+    options.deliveryMode = PHImageRequestOptionsDeliveryModeFastFormat;
+    [[PHImageManager defaultManager] requestImageForAsset:asset targetSize:PHImageManagerMaximumSize
+                                              contentMode:PHImageContentModeDefault
+                                                  options:options
+                                            resultHandler:^(UIImage *result, NSDictionary *info) {
+                                                dispatch_async(dispatch_get_main_queue(), ^{
+                                                    if (completion) {
+                                                        completion(result);
+                                                    }
+                                                });
+                                            }];
+}
+
++ (void)fetchUIImageFrom:(PHAsset *)asset
+        withDeliveryMode:(PHImageRequestOptionsDeliveryMode)mode
+              completion:(void (^)(UIImage *image))completion
+{
+    PHImageRequestOptions *options = [[PHImageRequestOptions alloc] init];
+    options.deliveryMode = mode;
+    [[PHImageManager defaultManager] requestImageForAsset:asset targetSize:PHImageManagerMaximumSize
+                                              contentMode:PHImageContentModeDefault
+                                                  options:options
+                                            resultHandler:^(UIImage *result, NSDictionary *info) {
+                                                dispatch_async(dispatch_get_main_queue(), ^{
+                                                    if (completion) {
+                                                        completion(result);
+                                                    }
+                                                });
+                                            }];
+}
+
++ (void)fetchAVPlayerItemFrom:(PHAsset *)asset completion:(void (^)(AVPlayerItem *playerItem))completion
+{
+    PHVideoRequestOptions *options = [[PHVideoRequestOptions alloc] init];
+    options.networkAccessAllowed = YES;
+    options.deliveryMode = PHImageRequestOptionsDeliveryModeHighQualityFormat;
+    [[PHImageManager defaultManager] requestPlayerItemForVideo:asset options:options resultHandler:^(AVPlayerItem * _Nullable playerItem, NSDictionary * _Nullable info) {
+        dispatch_async(dispatch_get_main_queue(), ^{
+            if (completion) {
+                completion(playerItem);
+            }
+        });
+    }];
+}
+
++ (void)fetchFileURLFrom:(PHAsset *)asset completion:(void (^)(NSURL *fileURL, AVAsset *avasset))completion
+{
+    PHVideoRequestOptions *options = [[PHVideoRequestOptions alloc] init];
+    options.deliveryMode = PHImageRequestOptionsDeliveryModeHighQualityFormat;
+    options.networkAccessAllowed = YES;
+    
+//    [[PHImageManager defaultManager] requestAVAssetForVideo:asset options:options resultHandler:^(AVAsset * _Nullable asset, AVAudioMix * _Nullable audioMix, NSDictionary * _Nullable info) {
+//        if ([asset isKindOfClass:[AVURLAsset class]] == YES) {
+//            AVURLAsset *avurlasset = (AVURLAsset *)asset;
+//            if (completion) {
+//                completion(avurlasset.URL, asset);
+//            }
+//        }
+//    }];
+    
+    [[PHImageManager defaultManager] requestAVAssetForVideo:asset options:nil resultHandler:^(AVAsset * _Nullable asset, AVAudioMix * _Nullable audioMix, NSDictionary * _Nullable info) {
+        NSString *url = [[[info objectForKey:@"PHImageFileSandboxExtensionTokenKey"] componentsSeparatedByString:@";"] lastObject];
+        completion(url, asset);
+    }];
 }
 
 @end

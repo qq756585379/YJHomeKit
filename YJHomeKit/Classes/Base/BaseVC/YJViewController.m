@@ -21,6 +21,7 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    self.titleColor = [UIColor whiteColor];
     self.view.backgroundColor = [UIColor whiteColor];
     self.automaticallyAdjustsScrollViewInsets = NO;
     
@@ -34,32 +35,31 @@
     self.tabBarHidden = YES;
     self.showGlobalMessageTip = YES;
     self.navigationBarTranslucent = NO;
-    self.titleColor = [YJColor colorWithRGB:0x212121];
+//    self.titleColor = [YJColor colorWithRGB:0x212121];
     
     if (!self.navigationItem.leftBarButtonItem) {
         self.navigationItem.leftBarButtonItem = [[UIBarButtonItem alloc] initWithCustomView:[UIView new]];
     }
 }
 
-- (void)viewWillAppear:(BOOL)animated
-{
+- (void)viewWillAppear:(BOOL)animated{
     [super viewWillAppear:animated];
     [self setStatusBarStyle:self.statusBarStyle];
     self.tabBarController.tabBar.hidden = self.tabBarHidden;
     self.navigationController.toolbarHidden = self.toolbarHidden;
     self.navigationController.navigationBarHidden = self.navigationBarHidden;
-    
+
     if (self.isNavigationBarTranslucent) {
         [self setNavigationBarTranslucent:YES];
     }else{
         [self setNavigationBarTranslucent:NO];
     }
-    
+
     [self.updateModelWhenViewLoadedBlocks.copy enumerateKeysAndObjectsUsingBlock:^(id key, id obj, BOOL *stop) {
         dispatch_block_t block = obj;
         !block ? : block();
     }];
-    
+
     [self.updateModelWhenViewLoadedOnceBlocks.copy enumerateKeysAndObjectsUsingBlock:^(id key, id obj, BOOL *stop) {
         dispatch_block_t block = obj;
         !block ? : block();
@@ -70,8 +70,7 @@
     //    [self postNotification:IMI_GLOBAL_CAN_SHOW_MESSAGE withObject:@(self.showGlobalMessageTip)];
 }
 
-- (void)viewDidAppear:(BOOL)animated
-{
+- (void)viewDidAppear:(BOOL)animated{
     [super viewDidAppear:animated];
     self.viewAppeared = YES;
     
@@ -79,7 +78,7 @@
         dispatch_block_t block = obj;
         !block ? : block();
     }];
-    
+
     [self.updateViewWhenViewdidAppearOnceBlocks.copy enumerateKeysAndObjectsUsingBlock:^(id key, id obj, BOOL *stop) {
         dispatch_block_t block = obj;
         !block ? : block();
@@ -88,17 +87,17 @@
     [self.updateViewWhenViewdidAppearOnceBlocks removeAllObjects];
 }
 
-- (void)viewWillDisappear:(BOOL)animated
-{
+- (void)viewWillDisappear:(BOOL)animated{
     [super viewWillDisappear:animated];
     self.viewAppeared = NO;
 }
 
 #pragma mark - title color
-- (void)setTitleColor:(UIColor *)titleColor
-{
+- (void)setTitleColor:(UIColor *)titleColor{
     _titleColor = titleColor;
-    NSDictionary *titleAttributes = @{NSForegroundColorAttributeName:titleColor, NSFontAttributeName:[UIFont systemFontOfSize:18.f weight:UIFontWeightHeavy]};
+    NSMutableDictionary *titleAttributes = [NSMutableDictionary dictionary];
+    [titleAttributes setObject:titleColor forKey:NSForegroundColorAttributeName];
+    [titleAttributes setObject:[UIFont systemFontOfSize:18.f] forKey:NSFontAttributeName];
     self.navigationController.navigationBar.titleTextAttributes = titleAttributes;
 }
 
@@ -140,25 +139,29 @@
     }
 }
 
-- (void)setNavigationBarTranslucent:(BOOL)navigationBarTranslucent
-{
+- (void)setNavigationBarTranslucent:(BOOL)navigationBarTranslucent{
     _navigationBarTranslucent = navigationBarTranslucent;
     self.navigationController.navigationBar.translucent = navigationBarTranslucent;
-    
     if (navigationBarTranslucent) {
-//        self.titleColor = [UIColor whiteColor];
-//        self.statusBarStyle = YJStatusBarStyleWhiteFont;
-//        self.navigationBarImage = [UIImage imageWithColor:[UIColor clearColor]];
-//        self.navigationBarShadowImage = [UIImage imageWithColor:[UIColor clearColor]];
+        self.titleColor = [UIColor whiteColor];
+        self.statusBarStyle = YJStatusBarStyleWhiteFont;
+        self.navigationBarImage = [UIImage imageWithColor:[UIColor clearColor]];
+        self.navigationBarShadowImage = [UIImage imageWithColor:[UIColor clearColor]];
     }
-    
-    
-//    [self.navigationController.navigationBar setBackgroundImage:self.navigationBarImage forBarMetrics:UIBarMetricsDefault];
-//    [self.navigationController.navigationBar setShadowImage:self.navigationBarShadowImage];
-//
-//    NSDictionary *titleTextAttributes = @{NSForegroundColorAttributeName:self.titleColor,
-//                                          NSFontAttributeName:[UIFont systemFontOfSize:18.f weight:UIFontWeightHeavy]};
-//    self.navigationController.navigationBar.titleTextAttributes = self.titleTextAttributes ? self.titleTextAttributes : titleTextAttributes;
+
+    self.navigationBarImage = self.navigationBarImage ? : [UIImage new];
+    self.navigationBarShadowImage = self.navigationBarShadowImage ? : [UIImage new];
+    [self.navigationController.navigationBar setBackgroundImage:self.navigationBarImage
+                                                  forBarMetrics:UIBarMetricsDefault];
+    [self.navigationController.navigationBar setShadowImage:self.navigationBarShadowImage];
+
+//    if (self.titleTextAttributes) {
+//        self.navigationController.navigationBar.titleTextAttributes = self.titleTextAttributes;
+//    } else {
+//        NSDictionary *titleTextAttributes = @{NSForegroundColorAttributeName:self.titleColor,
+//                                              NSFontAttributeName:[UIFont systemFontOfSize:18.f]};
+//        self.navigationController.navigationBar.titleTextAttributes = titleTextAttributes;
+//    }
 }
 
 #pragma mark - for vc perfomace
@@ -212,37 +215,35 @@
     }
 }
 
--(void)cancelFirstResponse
-{
+-(void)cancelFirstResponse{
     [self.view endEditing:YES];
     [self resignFirstResponder];
     [self.view resignFirstResponder];
 }
 
 #pragma mark - Orientations
-- (BOOL)shouldAutorotate
-{
+- (BOOL)shouldAutorotate{
     return NO;
 }
 
-- (void)dealloc
-{
-    [[NSNotificationCenter defaultCenter] removeObserver:self];
-}
-
-- (UIInterfaceOrientationMask)supportedInterfaceOrientations
-{
+- (UIInterfaceOrientationMask)supportedInterfaceOrientations{
     return UIInterfaceOrientationMaskPortrait;
 }
 
-- (UIStatusBarStyle)preferredStatusBarStyle
-{
+- (UIInterfaceOrientation)preferredInterfaceOrientationForPresentation{
+    return UIInterfaceOrientationPortrait;
+}
+
+- (UIStatusBarStyle)preferredStatusBarStyle{
     return self.statusBarStyle == YJStatusBarStyleBlackFont ? UIStatusBarStyleDefault : UIStatusBarStyleLightContent;
 }
 
-- (BOOL)prefersStatusBarHidden
-{
+- (BOOL)prefersStatusBarHidden{
     return self.isStatusBarHidden;
+}
+
+- (void)dealloc{
+    [[NSNotificationCenter defaultCenter] removeObserver:self];
 }
 
 @end

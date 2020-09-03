@@ -15,13 +15,13 @@
 @interface YJOperationManager()
 @property(nonatomic, assign) BOOL sessionIsInvalid;//session是否无效
 @property(nonatomic, strong) NSString *hostClassName;//宿主名称
-@property(nonatomic, strong) NSMutableArray *operationParams;//这里记录operation param，防止其释放，token过期处理会用到operation param
+//这里记录operation param，防止其释放，token过期处理会用到operation param
+@property(nonatomic, strong) NSMutableArray *operationParams;
 @end
 
 @implementation YJOperationManager
 
-+ (instancetype)managerWithOwner:(id)owner
-{
++ (instancetype)managerWithOwner:(id)owner{
     YJOperationManager *operationManager = [super manager];
     operationManager.requestSerializer = [AFJSONRequestSerializer serializer];//申明请求的数据是json类型
     operationManager.responseSerializer = [AFJSONResponseSerializer serializer];//设置json解析
@@ -47,8 +47,7 @@
 /**
  *  功能:发送请求
  */
-- (NSURLSessionDataTask *)requestWithParam:(YJOperationParam *)aParam
-{
+- (NSURLSessionDataTask *)requestWithParam:(YJOperationParam *)aParam{
     if (aParam == nil) return nil;
     
     if (self.sessionIsInvalid) {//session无效
@@ -109,8 +108,7 @@
 /**
  *  功能:接口调用成功处理
  */
-- (void)successWithTask:(NSURLSessionDataTask *)task responseObject:(id)responseObject param:(YJOperationParam *)aParam
-{
+- (void)successWithTask:(NSURLSessionDataTask *)task responseObject:(id)responseObject param:(YJOperationParam *)aParam{
     if ([responseObject isKindOfClass:[NSArray class]]) {
         NSMutableDictionary *responseDict = @{}.mutableCopy;
         responseDict[@"rtn_code"] = @"0";
@@ -158,8 +156,7 @@
 /**
  *  功能:接口调用失败处理
  */
-- (void)failWithTask:(NSURLSessionDataTask *)task error:(NSError *)aError param:(YJOperationParam *)aParam
-{
+- (void)failWithTask:(NSURLSessionDataTask *)task error:(NSError *)aError param:(YJOperationParam *)aParam{
     //打印失败的日志
     [self printFailResponse:aParam error:aError];
     
@@ -182,8 +179,7 @@
 /**
  *  功能:取消当前manager queue中所有网络请求
  */
-- (void)cancelAllOperations
-{
+- (void)cancelAllOperations{
     
 }
 
@@ -191,8 +187,7 @@
 /**
  *  接口日志上传
  */
-- (void)uploadLog:(YJOperationParam *)aParam responseObject:(id)aResponseObject
-{
+- (void)uploadLog:(YJOperationParam *)aParam responseObject:(id)aResponseObject{
     
 }
 
@@ -200,8 +195,7 @@
 /**
  *  功能:修改RequestSerializer
  */
-- (void)modifyRequestSerializerWithParam:(YJOperationParam *)aParam
-{
+- (void)modifyRequestSerializerWithParam:(YJOperationParam *)aParam{
     //超时时间
     if (aParam.timeoutTime) {
         self.requestSerializer.timeoutInterval = aParam.timeoutTime;
@@ -226,8 +220,7 @@
 /**
  *  打印Request，主要是接口请求的参数描述
  */
-- (void)printRequest:(YJOperationParam *)aParam operation:(NSURLSessionDataTask *)requestOperation
-{
+- (void)printRequest:(YJOperationParam *)aParam operation:(NSURLSessionDataTask *)requestOperation{
 #ifdef DEBUG
     NSURLRequest *request = [requestOperation currentRequest];
     NSString *unEncodeUrl = [request.URL.absoluteString stringByReplacingPercentEscapesUsingEncoding:NSUTF8StringEncoding];
@@ -242,8 +235,7 @@
 /**
  *  打印成功的Response
  */
-- (void)printSuccessResponse:(YJOperationParam *)aParam responseObject:(id)aResponseObject
-{
+- (void)printSuccessResponse:(YJOperationParam *)aParam responseObject:(id)aResponseObject{
 #ifdef DEBUG
     NSLog(@"(%lld)接口返回成功\n\n接口名%@\n接口内容%@\n\n", (long long)([[YJGlobalValue sharedInstance].serverTime timeIntervalSince1970]*1000),
           aParam.requestUrl, aResponseObject);
@@ -263,8 +255,7 @@
 /**
  *  打印失败的Response
  */
-- (void)printFailResponse:(YJOperationParam *)aParam error:(NSError *)aError
-{
+- (void)printFailResponse:(YJOperationParam *)aParam error:(NSError *)aError{
 #ifdef DEBUG
     NSString *errorMessage = [aError description];
     if (errorMessage) {
@@ -278,14 +269,12 @@
 #endif
 }
 
-- (void)dealloc
-{
+- (void)dealloc{
     NSLog(@"[%@ call %@ --> %@]", [self class], NSStringFromSelector(_cmd), _hostClassName);
 }
 
 #pragma mark - Property
-- (NSMutableArray *)operationParams
-{
+- (NSMutableArray *)operationParams{
     if (_operationParams == nil) {
         _operationParams = @[].mutableCopy;
     }
