@@ -76,7 +76,8 @@
     
     WEAK_SELF
     if (aParam.requestType == kRequestPost) {//POST方式
-        requestOperation = [self POST:requestUrl parameters:params progress:^(NSProgress * _Nonnull uploadProgress) {
+        
+      requestOperation = [self POST:requestUrl parameters:params headers:nil progress:^(NSProgress * _Nonnull uploadProgress) {
             
         } success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
             STRONG_SELF
@@ -86,7 +87,7 @@
             [self failWithTask:task error:error param:aParam];
         }];
     }else{
-        requestOperation = [self GET:requestUrl parameters:params progress:^(NSProgress * _Nonnull downloadProgress) {
+        requestOperation = [self GET:requestUrl parameters:params headers:nil progress:^(NSProgress * _Nonnull downloadProgress) {
             
         } success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
             STRONG_SELF
